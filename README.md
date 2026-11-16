@@ -21,5 +21,3 @@ Nomes em inglês dos Tasmons: o jogo só tem nomes em japonês, então o site mo
 
 ## Aviso
 Imagens, nomes e dados pertencem aos criadores do jogo. Confira se a hospedagem pública das imagens é permitida.
-# TasmonWiki
-# TasmonWiki
