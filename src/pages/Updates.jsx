@@ -1,0 +1,16 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+const N = [
+  ['Elemental Tower: eggs and Elemental Fruits', ['Winning in the Elemental Tower can now drop eggs. The chance is the same as on the map; higher floors give higher egg rarities (from floor 31, higher rarities are added every 3 floors).', 'New Elemental Fruits (berries) drop at 2% on any floor, with the same element as the tower, in 5 grades that change every 10 floors.', 'Use a fruit on a Tasmon of the same element to slightly raise Max HP, ATK, defense, crit rate, crit damage or single/area skill power (each stat is capped).', 'Odds for eggs and fruits are shown under “📊 Odds” in the tower panel.', 'Floors 41–50 are now open.']],
+  ['DLC: Permanent Talisman & Fruit Pass', ['In the Elemental Tower, talismans and fruits drop twice as often, forever (talismans 0.5% → 1%, fruits 2% → 4%). Egg odds do not change.', 'Includes a title, a friend card and a UI theme (title in the Titles window, theme under “UI theme” in the ⚙ menu). One-time purchase.', 'Adds auto-advance: turn on “⏫ Auto-advance” next to Repeat to go up one floor after each win; after a loss it repeats the floor below.']],
+  ['Hero Development Support DLC', ['Now includes Vol.1 (Death) hero eggs: one egg for each Vol.1 hero you unlocked in Death mode (Sigilfox / Crimsonlord).', 'Owners of the DLC get them too. If your egg slots are full, the egg arrives when a slot frees up. Useful to recover a hero you used as material.']],
+  ['Performance', ['Fixed slowdowns in battles and screens when you had a hero with Growth points; what remained after the urgent November 9 fix was cut to about a tenth.', 'Steam cannot install updates while the game is open. If you notice slowdowns, close and reopen the game.']],
+  ['Improvements', ['Best equipment now also equips talismans.', 'Best equipment now picks the gear with the highest DPS (ties go to the one with more HP).', 'Full-screen notices such as “Hero Growth unlocked” now close when you click outside or press Esc; the click right after the notice appears no longer passes through to the window behind.']],
+  ['Fixes', ['A bug that sometimes blocked a third Tasmon on the Elemental Tower team.', 'Text of an unavailable feature appearing in egg descriptions and elsewhere.', 'The ⚙ settings button going off screen when closing all windows with a large UI scale.', 'Recording lines shown in English in languages other than Japanese and English; tower names shown wrongly in some languages; DLC mails partly staying in Japanese.', 'A stage that said “win to receive” when today’s slot was already used before buying Support; it now says you receive from tomorrow’s wins.', 'The “Rank up” button not showing in the open detail of an invite partner when the friend’s play time already allowed it.', 'Better stability of online features.']]];
+export default function Updates(){
+  return (<>
+    <h1>Latest update</h1>
+    <p>Summary of the most recent patch notes (translated). The wiki pages were updated where the notes give concrete data: <Link to="/tower">Elemental Tower</Link>, <Link to="/hunt">Hero Hunt</Link>.</p>
+    {N.map(([t, l]) => <section key={t} className="sec card"><h2 style={{ marginTop: 0 }}>{t}</h2><ul>{l.map((x, i) => <li key={i}>{x}</li>)}</ul></section>)}
+  </>);
+}

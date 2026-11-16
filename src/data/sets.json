@@ -1,0 +1,1174 @@
+[
+ {
+  "id": "set_arcana_nuke",
+  "rarity": "arcana",
+  "role": "nuke",
+  "jp": "フランベルジュ",
+  "en": "Flamberge",
+  "lvBand": 100,
+  "two": [
+   {
+    "stat": "atkPct",
+    "value": 0.03
+   }
+  ],
+  "four": [
+   {
+    "stat": "critDmg",
+    "value": 0.05
+   }
+  ],
+  "special": {
+   "id": "doubleStrike",
+   "power": 0.1,
+   "desc": "Basic attacks have a chance to strike twice"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "フランベルジュ・大剣",
+    "en": "Flamberge Greatsword"
+   },
+   {
+    "part": "sub",
+    "jp": "フランベルジュ・戦斧",
+    "en": "Flamberge Battle Axe"
+   },
+   {
+    "part": "armor",
+    "jp": "フランベルジュ・闘鎧",
+    "en": "Flamberge Battle Armor"
+   },
+   {
+    "part": "helm",
+    "jp": "フランベルジュ・猛兜",
+    "en": "Flamberge Fierce Helm"
+   },
+   {
+    "part": "boots",
+    "jp": "フランベルジュ・軍靴",
+    "en": "Flamberge War Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_arcana_guard",
+  "rarity": "arcana",
+  "role": "guard",
+  "jp": "イージスシールド",
+  "en": "Aegis Shield",
+  "lvBand": 100,
+  "two": [
+   {
+    "stat": "defPct",
+    "value": 0.02
+   },
+   {
+    "stat": "hpPct",
+    "value": 0.05
+   }
+  ],
+  "four": [
+   {
+    "stat": "shieldPower",
+    "value": 0.08
+   },
+   {
+    "stat": "hpPct",
+    "value": 0.06
+   }
+  ],
+  "special": {
+   "id": "undying",
+   "power": 1,
+   "desc": "Survives a lethal hit once per stage"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "イージスシールド・長槍",
+    "en": "Aegis Shield Long Spear"
+   },
+   {
+    "part": "sub",
+    "jp": "イージスシールド・大盾",
+    "en": "Aegis Shield Great Shield"
+   },
+   {
+    "part": "armor",
+    "jp": "イージスシールド・重鎧",
+    "en": "Aegis Shield Heavy Armor"
+   },
+   {
+    "part": "helm",
+    "jp": "イージスシールド・鉄兜",
+    "en": "Aegis Shield Iron Helm"
+   },
+   {
+    "part": "boots",
+    "jp": "イージスシールド・鉄靴",
+    "en": "Aegis Shield Iron Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_arcana_heal",
+  "rarity": "arcana",
+  "role": "heal",
+  "jp": "セラフィムロッド",
+  "en": "Seraphim Rod",
+  "lvBand": 100,
+  "two": [
+   {
+    "stat": "healPower",
+    "value": 0.06
+   },
+   {
+    "stat": "hpPct",
+    "value": 0.04
+   }
+  ],
+  "four": [
+   {
+    "stat": "skillPower",
+    "value": 0.08
+   },
+   {
+    "stat": "hpPct",
+    "value": 0.05
+   }
+  ],
+  "special": {
+   "id": "overhealShield",
+   "power": 0.5,
+   "desc": "Healing that overflows becomes a barrier"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "セラフィムロッド・聖杖",
+    "en": "Seraphim Rod Holy Staff"
+   },
+   {
+    "part": "sub",
+    "jp": "セラフィムロッド・宝珠",
+    "en": "Seraphim Rod Orb"
+   },
+   {
+    "part": "armor",
+    "jp": "セラフィムロッド・法衣",
+    "en": "Seraphim Rod Vestments"
+   },
+   {
+    "part": "helm",
+    "jp": "セラフィムロッド・宝冠",
+    "en": "Seraphim Rod Crown"
+   },
+   {
+    "part": "boots",
+    "jp": "セラフィムロッド・聖履",
+    "en": "Seraphim Rod Sacred Shoes"
+   }
+  ]
+ },
+ {
+  "id": "set_arcana_buff",
+  "rarity": "arcana",
+  "role": "buff",
+  "jp": "ヴァルキリーの旗",
+  "en": "Valkyrie's Banner",
+  "lvBand": 100,
+  "two": [
+   {
+    "stat": "cdr",
+    "value": 0.02
+   },
+   {
+    "stat": "expBonus",
+    "value": 0.05
+   }
+  ],
+  "four": [
+   {
+    "stat": "skillPower",
+    "value": 0.06
+   },
+   {
+    "stat": "goldBonus",
+    "value": 0.08
+   }
+  ],
+  "special": {
+   "id": "longBuff",
+   "power": 0.5,
+   "desc": "Buffs you cast last longer"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "ヴァルキリーの旗・長弓",
+    "en": "Valkyrie's Banner Longbow"
+   },
+   {
+    "part": "sub",
+    "jp": "ヴァルキリーの旗・矢筒",
+    "en": "Valkyrie's Banner Quiver"
+   },
+   {
+    "part": "armor",
+    "jp": "ヴァルキリーの旗・外套",
+    "en": "Valkyrie's Banner Cloak"
+   },
+   {
+    "part": "helm",
+    "jp": "ヴァルキリーの旗・羽兜",
+    "en": "Valkyrie's Banner Feather Hood"
+   },
+   {
+    "part": "boots",
+    "jp": "ヴァルキリーの旗・旅靴",
+    "en": "Valkyrie's Banner Traveler's Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_beyond_nuke",
+  "rarity": "beyond",
+  "role": "nuke",
+  "jp": "バルムンク",
+  "en": "Balmung",
+  "lvBand": 115,
+  "two": [
+   {
+    "stat": "critRate",
+    "value": 0.037
+   }
+  ],
+  "four": [
+   {
+    "stat": "atkSpeed",
+    "value": 0.062
+   },
+   {
+    "stat": "bossDmg",
+    "value": 0.037
+   }
+  ],
+  "special": {
+   "id": "critChain",
+   "power": 1,
+   "desc": "After a critical hit, the next basic attack is always a critical"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "バルムンク・大剣",
+    "en": "Balmung Greatsword"
+   },
+   {
+    "part": "sub",
+    "jp": "バルムンク・戦斧",
+    "en": "Balmung Battle Axe"
+   },
+   {
+    "part": "armor",
+    "jp": "バルムンク・闘鎧",
+    "en": "Balmung Battle Armor"
+   },
+   {
+    "part": "helm",
+    "jp": "バルムンク・猛兜",
+    "en": "Balmung Fierce Helm"
+   },
+   {
+    "part": "boots",
+    "jp": "バルムンク・軍靴",
+    "en": "Balmung War Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_beyond_guard",
+  "rarity": "beyond",
+  "role": "guard",
+  "jp": "スヴァリンの盾",
+  "en": "Svalinn's Shield",
+  "lvBand": 115,
+  "two": [
+   {
+    "stat": "hpPct",
+    "value": 0.074
+   }
+  ],
+  "four": [
+   {
+    "stat": "defPct",
+    "value": 0.037
+   },
+   {
+    "stat": "shieldPower",
+    "value": 0.112
+   }
+  ],
+  "special": {
+   "id": "thorns",
+   "power": 0.149,
+   "desc": "Reflects part of the damage taken back to the enemy"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "スヴァリンの盾・長槍",
+    "en": "Svalinn's Shield Long Spear"
+   },
+   {
+    "part": "sub",
+    "jp": "スヴァリンの盾・大盾",
+    "en": "Svalinn's Shield Great Shield"
+   },
+   {
+    "part": "armor",
+    "jp": "スヴァリンの盾・重鎧",
+    "en": "Svalinn's Shield Heavy Armor"
+   },
+   {
+    "part": "helm",
+    "jp": "スヴァリンの盾・鉄兜",
+    "en": "Svalinn's Shield Iron Helm"
+   },
+   {
+    "part": "boots",
+    "jp": "スヴァリンの盾・鉄靴",
+    "en": "Svalinn's Shield Iron Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_beyond_heal",
+  "rarity": "beyond",
+  "role": "heal",
+  "jp": "アスクレピオスの杖",
+  "en": "Asclepius' Staff",
+  "lvBand": 115,
+  "two": [
+   {
+    "stat": "skillPower",
+    "value": 0.087
+   },
+   {
+    "stat": "hpPct",
+    "value": 0.05
+   }
+  ],
+  "four": [
+   {
+    "stat": "healPower",
+    "value": 0.124
+   },
+   {
+    "stat": "cdr",
+    "value": 0.037
+   }
+  ],
+  "special": {
+   "id": "lifelink",
+   "power": 0.05,
+   "desc": "Part of the damage dealt by basic attacks heals the party"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "アスクレピオスの杖・聖杖",
+    "en": "Asclepius' Staff Holy Staff"
+   },
+   {
+    "part": "sub",
+    "jp": "アスクレピオスの杖・宝珠",
+    "en": "Asclepius' Staff Orb"
+   },
+   {
+    "part": "armor",
+    "jp": "アスクレピオスの杖・法衣",
+    "en": "Asclepius' Staff Vestments"
+   },
+   {
+    "part": "helm",
+    "jp": "アスクレピオスの杖・宝冠",
+    "en": "Asclepius' Staff Crown"
+   },
+   {
+    "part": "boots",
+    "jp": "アスクレピオスの杖・聖履",
+    "en": "Asclepius' Staff Sacred Shoes"
+   }
+  ]
+ },
+ {
+  "id": "set_beyond_buff",
+  "rarity": "beyond",
+  "role": "buff",
+  "jp": "ギャラルホルン",
+  "en": "Gjallarhorn",
+  "lvBand": 115,
+  "two": [
+   {
+    "stat": "skillPower",
+    "value": 0.074
+   },
+   {
+    "stat": "goldBonus",
+    "value": 0.074
+   }
+  ],
+  "four": [
+   {
+    "stat": "cdr",
+    "value": 0.037
+   },
+   {
+    "stat": "dropBonus",
+    "value": 0.062
+   }
+  ],
+  "special": {
+   "id": "strongBuff",
+   "power": 0.31,
+   "desc": "Buffs you cast are stronger"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "ギャラルホルン・長弓",
+    "en": "Gjallarhorn Longbow"
+   },
+   {
+    "part": "sub",
+    "jp": "ギャラルホルン・矢筒",
+    "en": "Gjallarhorn Quiver"
+   },
+   {
+    "part": "armor",
+    "jp": "ギャラルホルン・外套",
+    "en": "Gjallarhorn Cloak"
+   },
+   {
+    "part": "helm",
+    "jp": "ギャラルホルン・羽兜",
+    "en": "Gjallarhorn Feather Hood"
+   },
+   {
+    "part": "boots",
+    "jp": "ギャラルホルン・旅靴",
+    "en": "Gjallarhorn Traveler's Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_century_nuke",
+  "rarity": "century",
+  "role": "nuke",
+  "jp": "カラドボルグ",
+  "en": "Caladbolg",
+  "lvBand": 130,
+  "two": [
+   {
+    "stat": "atkSpeed",
+    "value": 0.048
+   }
+  ],
+  "four": [
+   {
+    "stat": "atkPct",
+    "value": 0.064
+   },
+   {
+    "stat": "critRate",
+    "value": 0.032
+   }
+  ],
+  "special": {
+   "id": "execute",
+   "power": 0.48,
+   "desc": "Basic attacks deal more damage to enemies under 30% HP"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "カラドボルグ・大剣",
+    "en": "Caladbolg Greatsword"
+   },
+   {
+    "part": "sub",
+    "jp": "カラドボルグ・戦斧",
+    "en": "Caladbolg Battle Axe"
+   },
+   {
+    "part": "armor",
+    "jp": "カラドボルグ・闘鎧",
+    "en": "Caladbolg Battle Armor"
+   },
+   {
+    "part": "helm",
+    "jp": "カラドボルグ・猛兜",
+    "en": "Caladbolg Fierce Helm"
+   },
+   {
+    "part": "boots",
+    "jp": "カラドボルグ・軍靴",
+    "en": "Caladbolg War Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_century_guard",
+  "rarity": "century",
+  "role": "guard",
+  "jp": "ブリュンヒルデの鎧",
+  "en": "Brynhildr's Armor",
+  "lvBand": 130,
+  "two": [
+   {
+    "stat": "hpFlat",
+    "value": 192.0
+   }
+  ],
+  "four": [
+   {
+    "stat": "hpPct",
+    "value": 0.112
+   },
+   {
+    "stat": "cdr",
+    "value": 0.048
+   }
+  ],
+  "special": {
+   "id": "bulwark",
+   "power": 0.048,
+   "desc": "Damage taken decreases the more you are hit (stacking)"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "ブリュンヒルデの鎧・長槍",
+    "en": "Brynhildr's Armor Long Spear"
+   },
+   {
+    "part": "sub",
+    "jp": "ブリュンヒルデの鎧・大盾",
+    "en": "Brynhildr's Armor Great Shield"
+   },
+   {
+    "part": "armor",
+    "jp": "ブリュンヒルデの鎧・重鎧",
+    "en": "Brynhildr's Armor Heavy Armor"
+   },
+   {
+    "part": "helm",
+    "jp": "ブリュンヒルデの鎧・鉄兜",
+    "en": "Brynhildr's Armor Iron Helm"
+   },
+   {
+    "part": "boots",
+    "jp": "ブリュンヒルデの鎧・鉄靴",
+    "en": "Brynhildr's Armor Iron Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_century_heal",
+  "rarity": "century",
+  "role": "heal",
+  "jp": "ユグドラシルの枝",
+  "en": "Yggdrasil Branch",
+  "lvBand": 130,
+  "two": [
+   {
+    "stat": "cdr",
+    "value": 0.064
+   },
+   {
+    "stat": "hpPct",
+    "value": 0.08
+   }
+  ],
+  "four": [
+   {
+    "stat": "healPower",
+    "value": 0.144
+   },
+   {
+    "stat": "hpPct",
+    "value": 0.096
+   }
+  ],
+  "special": {
+   "id": "swiftRevive",
+   "power": 0.56,
+   "desc": "Fallen allies are revived faster"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "ユグドラシルの枝・聖杖",
+    "en": "Yggdrasil Branch Holy Staff"
+   },
+   {
+    "part": "sub",
+    "jp": "ユグドラシルの枝・宝珠",
+    "en": "Yggdrasil Branch Orb"
+   },
+   {
+    "part": "armor",
+    "jp": "ユグドラシルの枝・法衣",
+    "en": "Yggdrasil Branch Vestments"
+   },
+   {
+    "part": "helm",
+    "jp": "ユグドラシルの枝・宝冠",
+    "en": "Yggdrasil Branch Crown"
+   },
+   {
+    "part": "boots",
+    "jp": "ユグドラシルの枝・聖履",
+    "en": "Yggdrasil Branch Sacred Shoes"
+   }
+  ]
+ },
+ {
+  "id": "set_century_buff",
+  "rarity": "century",
+  "role": "buff",
+  "jp": "ヴァルハラの号令",
+  "en": "Valhalla's Command",
+  "lvBand": 130,
+  "two": [
+   {
+    "stat": "goldBonus",
+    "value": 0.144
+   }
+  ],
+  "four": [
+   {
+    "stat": "skillPower",
+    "value": 0.112
+   },
+   {
+    "stat": "expBonus",
+    "value": 0.112
+   }
+  ],
+  "special": {
+   "id": "warHorn",
+   "power": 0.32,
+   "desc": "Raises party ATK at the start of each stage"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "ヴァルハラの号令・長弓",
+    "en": "Valhalla's Command Longbow"
+   },
+   {
+    "part": "sub",
+    "jp": "ヴァルハラの号令・矢筒",
+    "en": "Valhalla's Command Quiver"
+   },
+   {
+    "part": "armor",
+    "jp": "ヴァルハラの号令・外套",
+    "en": "Valhalla's Command Cloak"
+   },
+   {
+    "part": "helm",
+    "jp": "ヴァルハラの号令・羽兜",
+    "en": "Valhalla's Command Feather Hood"
+   },
+   {
+    "part": "boots",
+    "jp": "ヴァルハラの号令・旅靴",
+    "en": "Valhalla's Command Traveler's Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_cosmic_nuke",
+  "rarity": "cosmic",
+  "role": "nuke",
+  "jp": "ミョルニル",
+  "en": "Mjolnir",
+  "lvBand": 145,
+  "two": [
+   {
+    "stat": "critDmg",
+    "value": 0.083
+   }
+  ],
+  "four": [
+   {
+    "stat": "basicAtkPct",
+    "value": 0.125
+   },
+   {
+    "stat": "atkPct",
+    "value": 0.062
+   }
+  ],
+  "special": {
+   "id": "overkill",
+   "power": 1,
+   "desc": "Excess damage from a basic-attack kill carries over to the next enemy"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "ミョルニル・大剣",
+    "en": "Mjolnir Greatsword"
+   },
+   {
+    "part": "sub",
+    "jp": "ミョルニル・戦斧",
+    "en": "Mjolnir Battle Axe"
+   },
+   {
+    "part": "armor",
+    "jp": "ミョルニル・闘鎧",
+    "en": "Mjolnir Battle Armor"
+   },
+   {
+    "part": "helm",
+    "jp": "ミョルニル・猛兜",
+    "en": "Mjolnir Fierce Helm"
+   },
+   {
+    "part": "boots",
+    "jp": "ミョルニル・軍靴",
+    "en": "Mjolnir War Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_cosmic_guard",
+  "rarity": "cosmic",
+  "role": "guard",
+  "jp": "レーヴァテインの守",
+  "en": "Laevateinn's Ward",
+  "lvBand": 145,
+  "two": [
+   {
+    "stat": "defPct",
+    "value": 0.062
+   }
+  ],
+  "four": [
+   {
+    "stat": "shieldPower",
+    "value": 0.208
+   },
+   {
+    "stat": "hpFlat",
+    "value": 332.8
+   }
+  ],
+  "special": {
+   "id": "lastStand",
+   "power": 0.4,
+   "desc": "Damage taken decreases as your HP gets lower"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "レーヴァテインの守・長槍",
+    "en": "Laevateinn's Ward Long Spear"
+   },
+   {
+    "part": "sub",
+    "jp": "レーヴァテインの守・大盾",
+    "en": "Laevateinn's Ward Great Shield"
+   },
+   {
+    "part": "armor",
+    "jp": "レーヴァテインの守・重鎧",
+    "en": "Laevateinn's Ward Heavy Armor"
+   },
+   {
+    "part": "helm",
+    "jp": "レーヴァテインの守・鉄兜",
+    "en": "Laevateinn's Ward Iron Helm"
+   },
+   {
+    "part": "boots",
+    "jp": "レーヴァテインの守・鉄靴",
+    "en": "Laevateinn's Ward Iron Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_cosmic_heal",
+  "rarity": "cosmic",
+  "role": "heal",
+  "jp": "アムリタの聖杯",
+  "en": "Amrita Chalice",
+  "lvBand": 145,
+  "two": [
+   {
+    "stat": "healPower",
+    "value": 0.146
+   }
+  ],
+  "four": [
+   {
+    "stat": "skillPower",
+    "value": 0.187
+   },
+   {
+    "stat": "defPct",
+    "value": 0.062
+   }
+  ],
+  "special": {
+   "id": "blessing",
+   "power": 0.05,
+   "desc": "ATK rises every time you heal (stacking)"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "アムリタの聖杯・聖杖",
+    "en": "Amrita Chalice Holy Staff"
+   },
+   {
+    "part": "sub",
+    "jp": "アムリタの聖杯・宝珠",
+    "en": "Amrita Chalice Orb"
+   },
+   {
+    "part": "armor",
+    "jp": "アムリタの聖杯・法衣",
+    "en": "Amrita Chalice Vestments"
+   },
+   {
+    "part": "helm",
+    "jp": "アムリタの聖杯・宝冠",
+    "en": "Amrita Chalice Crown"
+   },
+   {
+    "part": "boots",
+    "jp": "アムリタの聖杯・聖履",
+    "en": "Amrita Chalice Sacred Shoes"
+   }
+  ]
+ },
+ {
+  "id": "set_cosmic_buff",
+  "rarity": "cosmic",
+  "role": "buff",
+  "jp": "ビフレストの虹橋",
+  "en": "Bifrost Bridge",
+  "lvBand": 145,
+  "two": [
+   {
+    "stat": "dropBonus",
+    "value": 0.083
+   },
+   {
+    "stat": "atkSpeed",
+    "value": 0.062
+   }
+  ],
+  "four": [
+   {
+    "stat": "atkSpeed",
+    "value": 0.083
+   },
+   {
+    "stat": "skillPower",
+    "value": 0.187
+   }
+  ],
+  "special": {
+   "id": "momentum",
+   "power": 0.05,
+   "desc": "Attack speed rises every time you defeat an enemy (stacking)"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "ビフレストの虹橋・長弓",
+    "en": "Bifrost Bridge Longbow"
+   },
+   {
+    "part": "sub",
+    "jp": "ビフレストの虹橋・矢筒",
+    "en": "Bifrost Bridge Quiver"
+   },
+   {
+    "part": "armor",
+    "jp": "ビフレストの虹橋・外套",
+    "en": "Bifrost Bridge Cloak"
+   },
+   {
+    "part": "helm",
+    "jp": "ビフレストの虹橋・羽兜",
+    "en": "Bifrost Bridge Feather Hood"
+   },
+   {
+    "part": "boots",
+    "jp": "ビフレストの虹橋・旅靴",
+    "en": "Bifrost Bridge Traveler's Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_celestial_nuke",
+  "rarity": "celestial",
+  "role": "nuke",
+  "jp": "エクスカリバー",
+  "en": "Excalibur",
+  "lvBand": 150,
+  "two": [
+   {
+    "stat": "atkPct",
+    "value": 0.084
+   },
+   {
+    "stat": "critRate",
+    "value": 0.056
+   }
+  ],
+  "four": [
+   {
+    "stat": "bossDmg",
+    "value": 0.14
+   },
+   {
+    "stat": "critDmg",
+    "value": 0.14
+   }
+  ],
+  "special": {
+   "id": "annihilate",
+   "power": 0.5,
+   "desc": "Casting your single-target or damage-over-time attack skills can trigger a follow-up strike on all enemies"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "エクスカリバー・大剣",
+    "en": "Excalibur Greatsword"
+   },
+   {
+    "part": "sub",
+    "jp": "エクスカリバー・戦斧",
+    "en": "Excalibur Battle Axe"
+   },
+   {
+    "part": "armor",
+    "jp": "エクスカリバー・闘鎧",
+    "en": "Excalibur Battle Armor"
+   },
+   {
+    "part": "helm",
+    "jp": "エクスカリバー・猛兜",
+    "en": "Excalibur Fierce Helm"
+   },
+   {
+    "part": "boots",
+    "jp": "エクスカリバー・軍靴",
+    "en": "Excalibur War Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_celestial_guard",
+  "rarity": "celestial",
+  "role": "guard",
+  "jp": "ヘイムダルの砦",
+  "en": "Heimdall's Bastion",
+  "lvBand": 150,
+  "two": [
+   {
+    "stat": "hpFlat",
+    "value": 560.0
+   },
+   {
+    "stat": "shieldPower",
+    "value": 0.168
+   }
+  ],
+  "four": [
+   {
+    "stat": "defPct",
+    "value": 0.084
+   },
+   {
+    "stat": "hpPct",
+    "value": 0.168
+   },
+   {
+    "stat": "shieldPower",
+    "value": 0.224
+   }
+  ],
+  "special": {
+   "id": "aegisField",
+   "power": 0.1,
+   "desc": "Automatically raises a barrier at regular intervals"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "ヘイムダルの砦・長槍",
+    "en": "Heimdall's Bastion Long Spear"
+   },
+   {
+    "part": "sub",
+    "jp": "ヘイムダルの砦・大盾",
+    "en": "Heimdall's Bastion Great Shield"
+   },
+   {
+    "part": "armor",
+    "jp": "ヘイムダルの砦・重鎧",
+    "en": "Heimdall's Bastion Heavy Armor"
+   },
+   {
+    "part": "helm",
+    "jp": "ヘイムダルの砦・鉄兜",
+    "en": "Heimdall's Bastion Iron Helm"
+   },
+   {
+    "part": "boots",
+    "jp": "ヘイムダルの砦・鉄靴",
+    "en": "Heimdall's Bastion Iron Boots"
+   }
+  ]
+ },
+ {
+  "id": "set_celestial_heal",
+  "rarity": "celestial",
+  "role": "heal",
+  "jp": "エリュシオン",
+  "en": "Elysion",
+  "lvBand": 150,
+  "two": [
+   {
+    "stat": "skillPower",
+    "value": 0.14
+   },
+   {
+    "stat": "cdr",
+    "value": 0.084
+   }
+  ],
+  "four": [
+   {
+    "stat": "healPower",
+    "value": 0.224
+   },
+   {
+    "stat": "hpPct",
+    "value": 0.14
+   },
+   {
+    "stat": "defPct",
+    "value": 0.084
+   }
+  ],
+  "special": {
+   "id": "genesis",
+   "power": 0.6,
+   "desc": "Automatically heals allies who are close to falling"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "エリュシオン・聖杖",
+    "en": "Elysion Holy Staff"
+   },
+   {
+    "part": "sub",
+    "jp": "エリュシオン・宝珠",
+    "en": "Elysion Orb"
+   },
+   {
+    "part": "armor",
+    "jp": "エリュシオン・法衣",
+    "en": "Elysion Vestments"
+   },
+   {
+    "part": "helm",
+    "jp": "エリュシオン・宝冠",
+    "en": "Elysion Crown"
+   },
+   {
+    "part": "boots",
+    "jp": "エリュシオン・聖履",
+    "en": "Elysion Sacred Shoes"
+   }
+  ]
+ },
+ {
+  "id": "set_celestial_buff",
+  "rarity": "celestial",
+  "role": "buff",
+  "jp": "ブリーシンガメン",
+  "en": "Brisingamen",
+  "lvBand": 150,
+  "two": [
+   {
+    "stat": "skillPower",
+    "value": 0.14
+   },
+   {
+    "stat": "expBonus",
+    "value": 0.168
+   }
+  ],
+  "four": [
+   {
+    "stat": "cdr",
+    "value": 0.084
+   },
+   {
+    "stat": "goldBonus",
+    "value": 0.252
+   },
+   {
+    "stat": "dropBonus",
+    "value": 0.14
+   }
+  ],
+  "special": {
+   "id": "sovereign",
+   "power": 0.2,
+   "desc": "Raises the ATK of the whole party"
+  },
+  "pieces": [
+   {
+    "part": "weapon",
+    "jp": "ブリーシンガメン・長弓",
+    "en": "Brisingamen Longbow"
+   },
+   {
+    "part": "sub",
+    "jp": "ブリーシンガメン・矢筒",
+    "en": "Brisingamen Quiver"
+   },
+   {
+    "part": "armor",
+    "jp": "ブリーシンガメン・外套",
+    "en": "Brisingamen Cloak"
+   },
+   {
+    "part": "helm",
+    "jp": "ブリーシンガメン・羽兜",
+    "en": "Brisingamen Feather Hood"
+   },
+   {
+    "part": "boots",
+    "jp": "ブリーシンガメン・旅靴",
+    "en": "Brisingamen Traveler's Boots"
+   }
+  ]
+ }
+]
