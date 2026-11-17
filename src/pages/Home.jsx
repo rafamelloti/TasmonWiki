@@ -16,6 +16,7 @@ export default function Home(){
     ['/dex', 'DEX', `${count('normal')} collectable`, 'DEX buffs and collection milestones.'],
     ['/events', 'Events', 'Seasons · Halloween', 'Limited-time Tasmons, season skills and the completion bonus.'],
     ['/mechanics', 'Mechanics', 'Eggs · awakening', 'Egg odds, awakening, expeditions and invite partners.'],
+    ['/analyzer', 'Save Analyzer', 'Upload your save', 'Estimated DPS, clear time per stage and what to improve — all in your browser.'],
     ['/tower', 'Elemental Tower', '6 towers · 50 floors', 'Talismans, elemental fruits, eggs and the DLC pass.'],
     ['/hunt', 'Hero Hunt', '4 volumes', 'Hero challenge stages, modes and rewards.'],
     ['/updates', 'Latest update', 'Patch notes', 'What changed in the newest game update.'],

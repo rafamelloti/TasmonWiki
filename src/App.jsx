@@ -14,6 +14,7 @@ import Stages from './pages/Stages.jsx';
 import Events from './pages/Events.jsx';
 import Hunt from './pages/Hunt.jsx';
 import Tower from './pages/Tower.jsx';
+import Analyzer from './pages/Analyzer.jsx';
 import Updates from './pages/Updates.jsx';
 import Simulator from './pages/Simulator.jsx';
 import { MENU, MenuIcon, BANNER, BrandLogo } from './lib/menu.jsx';
@@ -44,6 +45,7 @@ export default function App(){
         <Route path="/events" element={<Events />} />
         <Route path="/hunt" element={<Hunt />} />
         <Route path="/tower" element={<Tower />} />
+        <Route path="/analyzer" element={<Analyzer />} />
         <Route path="/updates" element={<Updates />} />
         <Route path="*" element={<Home />} />
       </Routes>

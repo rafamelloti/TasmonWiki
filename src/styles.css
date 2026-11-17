@@ -118,3 +118,14 @@ a.card:hover,.tc:hover{box-shadow:0 6px 20px #0005}
 @media(max-width:900px){.simgrid{grid-template-columns:minmax(0,1fr)}.simright{position:static;order:-1}}
 .simlink{margin:12px 0}.simlink .btn{display:inline-block;text-decoration:none}
 .slotname{display:inline-flex;align-items:center;gap:8px}.slotname .mini{flex:none}
+
+/* save analyzer */
+.drop{border:2px dashed var(--line,#8886);border-radius:12px;padding:18px;margin:12px 0;text-align:center}
+.drop.on{border-color:#4a8cf0;background:#4a8cf01a}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.card.stat .big{font-size:26px;font-weight:700;margin:2px 0}
+.anbars{width:100%;height:auto;color:inherit;margin-top:8px}
+.anshare{height:6px;border-radius:3px;background:#8884;overflow:hidden;min-width:70px}.anshare i{display:block;height:100%;background:#4a8cf0}
+.advice{list-style:none;padding:0;margin:8px 0}.advice li{padding:8px 10px;border-left:4px solid #8886;margin:6px 0;background:#8881;border-radius:6px}
+.advice li.sev3{border-color:#e0603c}.advice li.sev2{border-color:#e0a63c}.advice li.sev1{border-color:#4a8cf0}.advice li.sev0{border-color:#4ac08c}
+.warn{color:#e0603c}
