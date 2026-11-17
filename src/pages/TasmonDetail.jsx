@@ -1,3 +1,4 @@
+import { TierBadge } from './Tiers.jsx';
 import React, { useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { speciesById, species, skills, passives, jobs, jobById, meta, RARITY_EN, RARITIES, ELEM_EN, ELEM_COLOR, GROUP_HOW, RECIPE_LIST, RECIPES, BREED_SUCCESS, REF_STEPS, availability, nameOf } from '../lib/data.js';
@@ -27,7 +28,7 @@ export default function TasmonDetail(){
       <div className="info">
         <h1><TasmonName s={s} big /></h1>{s.title && <div className="mut">{s.title}</div>}
         <div className="row"><RarTag r={s.rarity} /><ElemTag e={s.element} /><RoleTag r={s.role} /><GroupTag g={s.group} /><AvailTag s={s} /></div>
-        <div className="simlink"><Link className="btn" to={`/tasmons/${s.id}/sim`}>🧪 Open simulator</Link></div>
+        <div className="simlink"><TierBadge id={s.id} /> <Link className="btn" to={`/tasmons/${s.id}/sim`}>🧪 Open simulator</Link></div>
         <dl className="kv"><dt>ID</dt><dd>{s.id}</dd><dt>Base ATK</dt><dd>{s.atk}</dd><dt>Base HP</dt><dd>{s.hp}</dd><dt>Grows</dt><dd>{focusOf(s) === 'atk' ? 'ATK faster (HP grows at half rate after Lv125)' : 'HP faster (ATK grows at half rate after Lv125)'}</dd>
           <dt>Weak to</dt><dd>{weak.map(e => <span key={e} style={{ color: ELEM_COLOR[e], marginRight: 8 }}>{ELEM_EN[e]}</span>)}</dd>
           <dt>How to get</dt><dd>{GROUP_HOW[s.group]}{s.borrow ? ` (look and skill shared with ${s.borrow})` : ''}</dd>

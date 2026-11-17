@@ -15,6 +15,7 @@ import Events from './pages/Events.jsx';
 import Hunt from './pages/Hunt.jsx';
 import Tower from './pages/Tower.jsx';
 import Analyzer from './pages/Analyzer.jsx';
+import Tiers from './pages/Tiers.jsx';
 import Updates from './pages/Updates.jsx';
 import Simulator from './pages/Simulator.jsx';
 import { MENU, MenuIcon, BANNER, BrandLogo } from './lib/menu.jsx';
@@ -46,10 +47,11 @@ export default function App(){
         <Route path="/hunt" element={<Hunt />} />
         <Route path="/tower" element={<Tower />} />
         <Route path="/analyzer" element={<Analyzer />} />
+        <Route path="/tiers" element={<Tiers />} />
         <Route path="/updates" element={<Updates />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </main>
-    <footer className="wrap foot">Unofficial fan-made database for TASMON Taskbar Monsters. All game content, names and images belong to their respective owners. Data reflects the game version this site was built from.<br />Made by <b>RafaMelloTI</b> · <a href="https://steamcommunity.com/id/RafaMelloTI/" target="_blank" rel="noopener noreferrer">Steam profile</a></footer>
+    <footer className="wrap foot">Unofficial fan-made database for TASMON Taskbar Monsters. All game content, names and images belong to their respective owners. Data reflects the game version this site was built from.<br />Made by <b>RafaMelloTI</b> · <a href="https://steamcommunity.com/id/RafaMelloTI/" target="_blank" rel="noopener noreferrer">Steam profile</a> · <span title="Site version">v{typeof __APP_VERSION__ === 'string' ? __APP_VERSION__ : 'dev'}</span></footer>
   </>);
 }

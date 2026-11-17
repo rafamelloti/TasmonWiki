@@ -126,9 +126,17 @@ export function createAnalyzer(D){
     const lvCap = Math.min(LEVEL_CAP, Math.max(100, levelCapAt(maxEff)));
     const counts = { monsters: mons.length, eggs: (save.eggs || []).length, items: (save.items || []).length + (save.storage || []).length, talismans: (save.talismans || []).length };
     const berries = save.berries || {}; let berryTotal = 0; for (const v of Object.values(berries)) for (const n of v || []) berryTotal += num(n);
+    // stage progress per difficulty: reached = highest stage opened, cleared = boss stages beaten (a difficulty opens when the previous one's stage 100 is cleared)
+    const bc = save.bossClearedD || [], md = save.maxStageD || [];
+    const progress = PH.DIFFS.map((df, d) => {
+      const cleared = Math.max(0, Math.min(100, num(bc[d]))), reached = Math.max(0, Math.min(100, Math.max(num(md[d]), d === dcur ? num(save.stage) : 0)));
+      const unlocked = d === 0 || num(bc[d - 1]) >= 100 || cleared > 0 || reached > 1;
+      let eta = null; if (ms.length && unlocked && cleared < 100) { const r = stageTimes(ms, P, d, opt); eta = r.filter(x => x.st > cleared).reduce((a, x) => a + x.sec, 0); }
+      return { d, id: df.id, name: df.name, color: df.color, unlocked, reached, cleared, done: cleared >= 100, openStages: Math.max(0, reached - cleared), left: 100 - cleared, eta, current: d === dcur };
+    });
     const sens = ms.length ? sensitivity(ms, P, dsel, opt, dps) : [];
     const sug = ms.length ? suggestions({ ms, per, P, dps, basic, skill, rows, lvCap, counts, berryTotal, dsel, dcur, save, mons, byId, sens }) : [];
-    return { ok: true, difficulty: dsel, current: { difficulty: dcur, stage: num(save.stage || 1), maxEff }, lvCap, party: per.map(x => ({ ...x.m, skillDps: x.sk.total, skillList: x.sk.list })), P, basic, skill, dps, rows, acts, counts, berryTotal, sens, suggestions: sug,
+    return { ok: true, progress, difficulty: dsel, current: { difficulty: dcur, stage: num(save.stage || 1), maxEff }, lvCap, party: per.map(x => ({ ...x.m, skillDps: x.sk.total, skillList: x.sk.list })), P, basic, skill, dps, rows, acts, counts, berryTotal, sens, suggestions: sug,
       totals: { atk: ms.reduce((a, m) => a + m.atk, 0), hp: ms.reduce((a, m) => a + m.hp, 0), power: ms.reduce((a, m) => a + m.power, 0), game: ms.reduce((a, m) => a + m.dpsGame, 0) } };
   }
   function sensitivity(ms, P0, d, opt, dps0){

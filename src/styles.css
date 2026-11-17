@@ -129,3 +129,14 @@ a.card:hover,.tc:hover{box-shadow:0 6px 20px #0005}
 .advice{list-style:none;padding:0;margin:8px 0}.advice li{padding:8px 10px;border-left:4px solid #8886;margin:6px 0;background:#8881;border-radius:6px}
 .advice li.sev3{border-color:#e0603c}.advice li.sev2{border-color:#e0a63c}.advice li.sev1{border-color:#4a8cf0}.advice li.sev0{border-color:#4ac08c}
 .warn{color:#e0603c}
+
+/* tier list */
+.tiers{border:1px solid #8885;border-radius:10px;overflow:hidden;margin:12px 0}
+.trow{display:flex;border-bottom:1px solid #8883}.trow:last-child{border-bottom:0}
+.tlab{flex:0 0 64px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;color:#111}
+.tmons{display:flex;flex-wrap:wrap;gap:6px;padding:8px;min-height:60px;align-items:center;flex:1}
+.tchip{background:#8881;border:2px solid transparent;border-radius:8px;padding:2px;cursor:pointer}.tchip:hover,.tchip.on{border-color:#4a8cf0}
+.tierbadge{display:inline-block;border:1px solid;border-radius:999px;padding:2px 10px;font-size:13px;text-decoration:none;margin-right:6px}
+.tierdetail{margin-top:14px}
+
+.actrow{display:inline-flex;gap:2px}.actrow i{width:10px;height:14px;border-radius:2px;background:#8884;display:block}.actrow i.part{background:#8888}
