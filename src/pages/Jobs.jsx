@@ -22,8 +22,7 @@ export default function Jobs(){
     <label className="fld chk"><input type="checkbox" checked={shiny} onChange={e => setShiny(e.target.checked)} /> <span>Show Shiny versions</span></label>
     <div className="grid2">{groups[tab].map(j => (<div key={j.id} className="card jb">
       <div className="row"><ArtViewer getArt={e => e ? jobArts(j.id, e) : [`jobs/${j.id}.png`]} fallback={jobArts(j.id)} assets={assets} shiny={shiny} size={88} label={j.id} /><div><b>{dispName(JOB_EN[j.id], j.jp)[0]}</b>{dispName(JOB_EN[j.id], j.jp)[1] && <small> {dispName(JOB_EN[j.id], j.jp)[1]}</small>}{j.charName && <div className="mut small">Character: {romaji(j.charName)}</div>}<div className="row"><RoleTag r={j.role} /><span className="tag">Tier {j.tier}</span></div></div></div>
-      <ul className="bul">{jobBonusText(j).map(t => <li key={t}>{t}</li>)}</ul>
-      {sp[j.id] && <div className="mut small">Job special: <b>{sp[j.id].label}</b> — {jobBonusText({ mult: sp[j.id].mult || {}, stat: sp[j.id].stat || {} }).join(', ')}</div>}
+      <ul className="bul">{jobBonusText(j).map(t => <li key={t}>{t}</li>)}{sp[j.id] && <li key="sp"><b>{sp[j.id].label}</b> (special): {jobBonusText({ mult: sp[j.id].mult || {}, stat: sp[j.id].stat || {} }).join(', ')}</li>}</ul>
       {j.skill && skills[j.skill] && <SkillCard id={j.skill} showUsers={false} />}
     </div>))}</div>
   </>);

@@ -140,3 +140,22 @@ a.card:hover,.tc:hover{box-shadow:0 6px 20px #0005}
 .tierdetail{margin-top:14px}
 
 .actrow{display:inline-flex;gap:2px}.actrow i{width:10px;height:14px;border-radius:2px;background:#8884;display:block}.actrow i.part{background:#8888}
+
+/* top menu: wraps onto extra rows instead of being cut off, and tiles scale with the screen width */
+.gnav{flex-wrap:wrap;overflow:visible;justify-content:center;gap:clamp(3px,.5vw,6px)}
+.gnav a.gi{flex:1 1 clamp(64px,7.2vw,96px);min-width:0;max-width:130px;padding:clamp(4px,.6vw,7px) clamp(4px,.7vw,10px) clamp(4px,.5vw,6px);font-size:clamp(10.5px,.95vw,12.5px)}
+.gnav a.gi span{max-width:100%;text-align:center;line-height:1.15;overflow-wrap:anywhere}
+.gnav .micon,.gnav .memoji{width:clamp(22px,2.2vw,28px);height:clamp(22px,2.2vw,28px)}
+@media (max-width:640px){.gnav a.gi{flex-basis:calc(25% - 6px);max-width:none}}
+
+/* team builder: Tasmon hover cards and source picker */
+.montip{position:relative;display:inline-block}.montip>a{text-decoration:underline dotted;text-underline-offset:3px}
+.montip .tipbox{display:none;position:absolute;left:0;top:100%;z-index:60;min-width:210px;max-width:290px;padding:8px 10px;background:#10131c;border:1px solid #3a4560;border-radius:10px;box-shadow:0 8px 24px #000a;color:#dfe6f5;font-weight:400;text-align:left;white-space:normal}
+.montip:hover .tipbox,.montip:focus-within .tipbox{display:block}
+.srcpick{cursor:pointer;text-align:left;font:inherit;color:inherit}.srcpick:hover{border-color:#7affb0;transform:translateY(-2px)}.srcemoji{font-size:34px}
+
+/* job cards: art on the left, name block on the right, never wrapped underneath (long names like White Dragon) */
+.card.jb>.row:first-child{flex-wrap:nowrap;align-items:flex-start}
+.card.jb>.row:first-child>:first-child{flex:none}
+.card.jb>.row:first-child>:last-child{flex:1 1 0;min-width:0;overflow-wrap:anywhere}
+.card.jb>.row:first-child>:last-child .row{flex-wrap:wrap}

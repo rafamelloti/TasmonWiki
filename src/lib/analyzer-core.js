@@ -207,7 +207,7 @@ export function createAnalyzer(D){
     const own = sp[m.speciesId], native = new Set([own?.skill, ...(own?.extraSkills || []), ...(m.raw?.learnedSkills || [])].filter(Boolean)), out = [];
     for (const id of Object.keys(skills)) { const k = skills[id]; if (!k || !k.cooldown || !k.power || !k.type) continue;
       if (native.has(id)) { out.push(id); continue; }
-      if (opt.transfer === false || k.signature) continue;
+      if (opt.transfer === false || k.signature || JOBSK.has(id)) continue;
       if (opt.only && !opt.only.has(id)) continue;
       if (k.speciesOnly && k.speciesOnly !== m.speciesId && opt.exclusive === false) continue;
       out.push(id); }
@@ -223,19 +223,29 @@ export function createAnalyzer(D){
     const cand = []; for (const t of Object.keys(top)) cand.push(...top[t].sort((a, b) => sc[b] - sc[a]).slice(0, 6));
     return { cand, pool, sc };
   }
+  // Rare / Hidden jobs hand their job skill to the Tasmon as a 3rd skill. Job skills are therefore not offered as ordinary inheritable skills.
+  const RJ = Object.values(jb).filter(j => (j.rare || j.hidden) && j.skill && skills[j.skill]), JOBSK = new Set(RJ.map(j => j.skill));
+  const jobSkillOf = id => (id && jb[id] && (jb[id].rare || jb[id].hidden) && skills[jb[id].skill]) ? jb[id].skill : null;
+  const remake = (m, job) => { const r = monster({ ...m.raw, job }); return r ? { ...r, id: m.id } : m; };
   function tuneTeam(ms, opt = {}){
-    const mode = opt.mode || 'dps', info = ms.map(m => soloLoadout(m, opt));
-    let cur = ms.map((m, i) => { const c = info[i].cand.slice().sort((a, b) => info[i].sc[b] - info[i].sc[a]); return withSk(m, c.slice(0, 2)); });
+    const mode = opt.mode || 'dps', useJobs = !!opt.jobs && mode !== 'pvp', info = ms.map(m => soloLoadout(m, opt));
+    const mk = (m, pair) => { const js = jobSkillOf(m.job); return { ...m, jobSkill: js, skillsEq: js ? [...pair, js] : pair }; };
+    let cur = ms.map((m, i) => { const c = info[i].cand.slice().sort((a, b) => info[i].sc[b] - info[i].sc[a]); return mk(m, c.slice(0, 2)); });
+    const pairOf = m => m.jobSkill ? m.skillsEq.slice(0, -1) : m.skillsEq;
     for (let pass = 0; pass < 3; pass++) { let changed = false;
-      for (let i = 0; i < cur.length; i++) { const c = info[i].cand; let best = scoreOf(teamInfo(cur, opt), mode), pick = cur[i].skillsEq;
-        for (let a = 0; a < c.length; a++) for (let b = a + 1; b < c.length; b++) { const t = cur.slice(); t[i] = withSk(cur[i], [c[a], c[b]]); const v = scoreOf(teamInfo(t, opt), mode); if (v > best * 1.00001) { best = v; pick = [c[a], c[b]]; } }
-        if (pick !== cur[i].skillsEq) { cur[i] = withSk(cur[i], pick); changed = true; } }
+      for (let i = 0; i < cur.length; i++) {
+        let best = scoreOf(teamInfo(cur, opt), mode), pick = cur[i];
+        const jobs = useJobs ? [cur[i].job || '', ...RJ.map(j => j.id).filter(id => id !== (cur[i].job || ''))] : [cur[i].job || ''];
+        for (const J of jobs) { const same = J === (cur[i].job || ''), base = same ? cur[i] : remake(cur[i], J), c = same ? info[i].cand : info[i].cand.slice().sort((a, b) => info[i].sc[b] - info[i].sc[a]).slice(0, 10);
+          const mkJ = (pair) => mk({ ...base, job: J }, pair);
+          for (let x = 0; x < c.length; x++) for (let y = x + 1; y < c.length; y++) { const cand = mkJ([c[x], c[y]]), t = cur.slice(); t[i] = cand; const v = scoreOf(teamInfo(t, opt), mode); if (v > best * 1.00001) { best = v; pick = cand; } } }
+        if (pick !== cur[i]) { cur[i] = pick; changed = true; } }
       if (!changed) break; }
     return { mons: cur, info: teamInfo(cur, opt) };
   }
   function bestTeams(pool, opt = {}){
     if (opt.tune && !opt._tuned) { const o2 = { ...opt, _tuned: 1, tune: false }; pool = pool.map(m => { const si = soloLoadout(m, opt), c = si.cand.slice().sort((a, b) => si.sc[b] - si.sc[a]); return withSk(m, c.slice(0, 2)); });
-      const res = bestTeams(pool, o2); return res.map(t => { const byId = Object.fromEntries(pool.map(m => [m.id, m])), r = tuneTeam(t.ids.map(i => byId[i]), opt); return { ...r.info, loadout: r.mons.map(m => ({ id: m.id, skills: m.skillsEq })) }; }).sort((a, b) => scoreOf(b, opt.mode || 'dps') - scoreOf(a, opt.mode || 'dps')); }
+      const res = bestTeams(pool, o2); return res.map(t => { const byId = Object.fromEntries(pool.map(m => [m.id, m])), r = tuneTeam(t.ids.map(i => byId[i]), opt); return { ...r.info, loadout: r.mons.map(m => ({ id: m.id, skills: m.skillsEq, job: m.job, jobSkill: m.jobSkill })) }; }).sort((a, b) => scoreOf(b, opt.mode || 'dps') - scoreOf(a, opt.mode || 'dps')); }
     const size = opt.size || 3, top = opt.top || 5, mode = opt.mode || 'dps', key = mode === 'pvp' ? 'rating' : 'dpsB';
     const pick = (f, n) => pool.slice().sort((a, b) => f(b) - f(a)).slice(0, n), set = new Map();
     const heal = m => m.skillsEq.reduce((a, id) => { const k = skills[id]; return a + (k && k.type === 'heal' && k.cooldown ? k.power / k.cooldown : 0); }, 0), buffv = m => m.skillsEq.reduce((a, id) => { const k = skills[id]; return a + (k && k.type === 'buff' && k.cooldown ? k.power * Math.min(1, (k.duration || 0) / k.cooldown) : 0); }, 0);

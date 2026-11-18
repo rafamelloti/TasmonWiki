@@ -16,7 +16,7 @@ export default function Home(){
     ['/dex', 'DEX', `${count('normal')} collectable`, 'DEX buffs and collection milestones.'],
     ['/events', 'Events', 'Seasons · Halloween', 'Limited-time Tasmons, season skills and the completion bonus.'],
     ['/mechanics', 'Mechanics', 'Eggs · awakening', 'Egg odds, awakening, expeditions and invite partners.'],
-    ['/tiers', 'Tier List', 'Best Tasmons', 'SS to F rankings for attackers, tanks, healers and buffers.'],
+    ['/tiers', 'Tasmon Tier List', 'Best Tasmons', 'SS to F rankings for attackers, tanks, healers and buffers.'],
     ['/analyzer', 'Save Analyzer', 'Upload your save', 'Estimated DPS, clear time per stage and what to improve — all in your browser.'],
     ['/team-builder', 'Team Builder', 'Best DPS and PvP teams', 'Build the strongest team from your save, with the best skills to inherit for each Tasmon.'],
     ['/tower', 'Elemental Tower', '6 towers · 50 floors', 'Talismans, elemental fruits, eggs and the DLC pass.'],

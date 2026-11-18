@@ -1,5 +1,6 @@
 import React from 'react';
-import { Img, useAssets, imgUrl } from './img.jsx';
+import { Img, useAssets, imgUrl, monArts } from './img.jsx';
+import { speciesById } from './data.js';
 // One entry per wiki section: route, label, accent colour (game element colours) and icon candidates taken from the game's own art.
 export const MENU = [
   { to: '/tasmons',   t: 'Tasmons',   c: '#ff8a5a', art: ['icons/egg/legend.png'],        em: '🥚' },
@@ -11,7 +12,7 @@ export const MENU = [
   { to: '/dex',       t: 'DEX',       c: '#8ab8ff', art: ['icons/role/summoner.png', 'icons/egg/rare.png'], em: '📖' },
   { to: '/events',    t: 'Events',    c: '#ff6ad8', art: ['icons/egg/celestial.png'],     em: '🎃' },
   { to: '/hunt',      t: 'Hero Hunt', c: '#ff9a4a', art: ['monsters/sigilfox.png'],       em: '🎯' },
-  { to: '/tiers',    t: 'Tier List', c: '#ffd24a', art: ['custom/equip/axe.svg'],         em: '🏆' },
+  { to: '/tiers',    t: 'Tasmon Tier List', c: '#ffd24a', art: speciesById.seraphdrake ? monArts(speciesById.seraphdrake) : ['icons/egg/legend.png'], em: '🏆' },
   { to: '/analyzer', t: 'Save Analyzer',  c: '#7affb0', art: ['custom/equip/orb.svg'],        em: '📊' },
   { to: '/team-builder', t: 'Team Builder', c: '#ffb86b', art: ['custom/equip/sword.svg'], em: '⚔️' },
   { to: '/tower',     t: 'Tower',     c: '#7ad0ff', art: ['icons/element/wind.png'],      em: '🗼' },

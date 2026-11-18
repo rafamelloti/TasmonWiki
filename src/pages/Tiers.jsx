@@ -19,24 +19,28 @@ export function TierBadge({ id }){
 }
 
 
-function JobSection({ nat }){
-  const arr = JOBTIERS.by[nat] || [], groups = [['Rare Jobs', e => e.rare], ['Hidden Jobs', e => e.hidden]];
-  return (<>{groups.map(([title, f]) => { const g = arr.filter(f); if (!g.length) return null;
-    return (<section key={title} className="sec"><h2>{title} · {ROLE_EN[nat]}</h2>
+function JobSection({ nat, which }){
+  const natures = nat ? [nat] : NATURES.map(n => n[0]), all = [['Rare Jobs', e => e.rare, 'rare'], ['Hidden Jobs', e => e.hidden, 'hidden']].filter(g => !which || g[2] === which);
+  return (<>{natures.flatMap(nt => all.map(([title, f]) => ({ nt, title, f }))).map(({ nt, title, f }) => { const g = (JOBTIERS.by[nt] || []).filter(f); if (!g.length) return null;
+    return (<section key={title + nt} className="sec"><h2>{title} · {ROLE_EN[nt]}</h2>
       <div className="tiers">{TIER_ORDER.filter(t => t !== 'SS').map(t => { const row = g.filter(e => e.tier2 === t); if (!row.length) return null; return (<div key={t} className="trow"><div className="tlab" style={{ background: TIER_COLOR[t] }}>{t}</div>
         <div className="tmons">{row.map(e => <span key={e.id} className="tchip" style={{ width: 'auto', padding: '4px 8px', gap: 6, display: 'inline-flex', alignItems: 'center' }} title={`${e.metric} ×${e.score.toFixed(2)}${e.special ? ' · ' + e.special.label : ''}`}><Img art={jobArts(e.id)} size={32} alt={e.id} label={e.id} /><span className="small"><b>{JOB_EN[e.id] || e.id}</b><br />{e.metric} ×{e.score.toFixed(2)} · #{e.rank} of {e.of}</span></span>)}</div></div>); })}</div></section>); })}
     <p className="mut small">Jobs are scored from their own ATK/HP multipliers, stat bonuses, special perk and job skill, then ranked against every job of the same nature (common jobs included).</p></>);
 }
 
 export default function Tiers(){
+  const [view, setView] = useState('mon');
   const q0 = new URLSearchParams((window.location.hash.split('?')[1]) || '');
   const [nat, setNat] = useState(NATURES.some(n => n[0] === q0.get('n')) ? q0.get('n') : 'nuke'), [sel, setSel] = useState(q0.get('s') || ''), [q, setQ] = useState(''), [rar, setRar] = useState(''), [el, setEl] = useState('');
   const arr = TIERS.by[nat] || [];
   const shown = useMemo(() => arr.filter(e => (!rar || e.rarity === rar) && (!el || e.element === el) && (!q || (e.id + ' ' + speciesById[e.id].jp).toLowerCase().includes(q.toLowerCase()))), [arr, rar, el, q]);
   const cur = sel && TIERS.byId[sel] && TIERS.byId[sel].role === nat ? TIERS.byId[sel] : null, cs = cur ? speciesById[cur.id] : null;
   const info = NATURES.find(n => n[0] === nat);
+  const VIEWS = [['mon', 'Tasmons'], ['rare', 'Rare Jobs'], ['hidden', 'Hidden Jobs']];
   return (<>
     <h1>Tasmon Tier List</h1>
+    <div className="row wrap">{VIEWS.map(([k, t]) => <button key={k} className={'btn' + (k === view ? ' on' : '')} onClick={() => setView(k)}>{t}</button>)}</div>
+    {view !== 'mon' ? (<><p>Jobs ranked inside their nature. Each job is scored from its own ATK/HP multipliers, stat bonuses, special perk and job skill, against every job of the same nature (common jobs included).</p><JobSection which={view} /></>) : (<>
     <p>Pick what you are looking for and see the best Tasmons for it. Every Tasmon is ranked against others of the <b>same nature</b>, using the game’s own numbers (base stats, rarity, level growth, passives and skill power and cooldown), all compared at Lv 150 with neutral IV, no awakening and no gear. <b>SS</b> is reserved for Tasmons far above everyone else; then S, A, B, C, D, E and F from best to worst.</p>
     <div className="row wrap">{NATURES.map(([k, t]) => <button key={k} className={'btn' + (k === nat ? ' on' : '')} onClick={() => { setNat(k); setSel(''); }}>{t} <span className="mut small">({(TIERS.by[k] || []).length})</span></button>)}</div>
     <p className="mut">{info[2]}</p>
@@ -53,6 +57,7 @@ export default function Tiers(){
       <p className="mut small">At Lv 150 (neutral IV, no awakening or gear): ATK {fmtBig(cur.A)} · Max HP {fmtBig(cur.H)}.</p>
       <div className="stack">{cur.skillIds.map(id => <SkillCard key={id} id={id} />)}</div></section>)}
     <JobSection nat={nat} />
+    </>)}
     <section className="sec"><h2>How the score works</h2><ul className="bul small">
       <li><b>Attacker:</b> ATK × (1 + skill damage per second ÷ ATK). Area skills count ×1.35, execute ×1.15, drain and single-hit ×1.1, multi-hit skills count every hit. Uses the strongest awakening tier of its skill.</li>
       <li><b>Tank:</b> Max HP × the durability its skill adds. Shields are valued over a 30-second fight; guard and party damage-reduction skills by how much damage they cut over time; taunt, death-ward and instant-rise get a bonus.</li>
