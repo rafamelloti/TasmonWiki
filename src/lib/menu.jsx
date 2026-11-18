@@ -13,6 +13,7 @@ export const MENU = [
   { to: '/hunt',      t: 'Hero Hunt', c: '#ff9a4a', art: ['monsters/sigilfox.png'],       em: '🎯' },
   { to: '/tiers',    t: 'Tier List', c: '#ffd24a', art: ['custom/equip/axe.svg'],         em: '🏆' },
   { to: '/analyzer', t: 'Save Analyzer',  c: '#7affb0', art: ['custom/equip/orb.svg'],        em: '📊' },
+  { to: '/team-builder', t: 'Team Builder', c: '#ffb86b', art: ['custom/equip/sword.svg'], em: '⚔️' },
   { to: '/tower',     t: 'Tower',     c: '#7ad0ff', art: ['icons/element/wind.png'],      em: '🗼' },
   { to: '/mechanics', t: 'Mechanics', c: '#ffb86a', art: ['custom/equip/staff.svg'],        em: '⚙️' },
   { to: '/stages',    t: 'Stages',    c: '#ff5a5a', art: ['bosses/fire.png'],             em: '☠️' } ];
@@ -47,7 +48,7 @@ export function MenuIcon({ m, size = 28 }){
   return cand.length ? <Centered art={cand} size={size} label={m.em} round={m.round} /> : <span className="memoji" style={{ fontSize: size * .8 }}>{m.em}</span>;
 }
 // Page banner per section (game backgrounds)
-export const BANNER = { '/tiers': 'bg/cave/backdrop.png', '/analyzer': 'bg/cave/backdrop.png', '/tower': 'bg/snow/backdrop.png', '/updates': 'bg/plains/backdrop.png', '/hunt': 'bg/volcano/backdrop.png', '/stages': 'bg/volcano/backdrop.png', '/events': 'bg/snow/backdrop.png', '/mechanics': 'bg/cave/backdrop.png', '/elements': 'bg/cave/backdrop.png', '/dex': 'bg/plains/backdrop.png' };
+export const BANNER = { '/tiers': 'bg/cave/backdrop.png', '/analyzer': 'bg/cave/backdrop.png', '/team-builder': 'bg/cave/backdrop.png', '/tower': 'bg/snow/backdrop.png', '/updates': 'bg/plains/backdrop.png', '/hunt': 'bg/volcano/backdrop.png', '/stages': 'bg/volcano/backdrop.png', '/events': 'bg/snow/backdrop.png', '/mechanics': 'bg/cave/backdrop.png', '/elements': 'bg/cave/backdrop.png', '/dex': 'bg/plains/backdrop.png' };
 
 // The game's own app icon (build/icon.ico) as the site logo; falls back to a "T" until the images are extracted.
 export function BrandLogo(){

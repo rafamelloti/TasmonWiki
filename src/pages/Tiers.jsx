@@ -1,13 +1,14 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { species, speciesById, skills, meta, RARITIES, RARITY_EN, ELEMENTS, ELEM_EN, ROLE_EN } from '../lib/data.js';
-import { buildTiers, TIER_ORDER } from '../lib/tier-core.js';
+import { species, speciesById, skills, meta, jobs, jobSpecials, JOB_EN, RARITIES, RARITY_EN, ELEMENTS, ELEM_EN, ROLE_EN } from '../lib/data.js';
+import { buildTiers, buildJobTiers, TIER_ORDER } from '../lib/tier-core.js';
 import { SpeciesChip, TasmonName, RarTag, ElemTag, GroupTag } from '../components.jsx';
 import { SkillCard } from '../cards.jsx';
-import { Img, monArts } from '../lib/img.jsx';
+import { Img, monArts, jobArts } from '../lib/img.jsx';
 import { fmtBig } from '../lib/text.js';
 
 export const TIERS = buildTiers({ species, skills, meta });
+export const JOBTIERS = buildJobTiers({ jobs, specials: jobSpecials, skills });
 export const TIER_COLOR = { SS: '#ff4d6d', S: '#ff8a3c', A: '#f2c94c', B: '#8bd450', C: '#3fc2a0', D: '#4a8cf0', E: '#8a7af0', F: '#8a8f9c' };
 const NATURES = [['nuke', 'Attacker', 'Raw damage: ATK and attack skills.'], ['guard', 'Tank', 'Staying power: Max HP, shields and damage reduction.'], ['heal', 'Healer', 'Party HP restored per second, plus revive and death-ward effects.'], ['buff', 'Buffer', 'How much it boosts the whole party’s damage while its buff is up.']];
 const fmtMetric = e => e.role === 'heal' ? (e.score * 100).toFixed(1) + '% / s' : e.role === 'buff' ? '+' + (e.score * 100).toFixed(0) + '%' : fmtBig(e.score);
@@ -15,6 +16,16 @@ const fmtMetric = e => e.role === 'heal' ? (e.score * 100).toFixed(1) + '% / s' 
 export function TierBadge({ id }){
   const e = TIERS.byId[id]; if (!e) return null;
   return <Link to={`/tiers?n=${e.role}&s=${id}`} className="tierbadge" style={{ borderColor: TIER_COLOR[e.tier], color: TIER_COLOR[e.tier] }} title={`${ROLE_EN[e.role]} tier list`}><b>{e.tier}</b> {ROLE_EN[e.role]} · #{e.rank} of {e.of}</Link>;
+}
+
+
+function JobSection({ nat }){
+  const arr = JOBTIERS.by[nat] || [], groups = [['Rare Jobs', e => e.rare], ['Hidden Jobs', e => e.hidden]];
+  return (<>{groups.map(([title, f]) => { const g = arr.filter(f); if (!g.length) return null;
+    return (<section key={title} className="sec"><h2>{title} · {ROLE_EN[nat]}</h2>
+      <div className="tiers">{TIER_ORDER.filter(t => t !== 'SS').map(t => { const row = g.filter(e => e.tier2 === t); if (!row.length) return null; return (<div key={t} className="trow"><div className="tlab" style={{ background: TIER_COLOR[t] }}>{t}</div>
+        <div className="tmons">{row.map(e => <span key={e.id} className="tchip" style={{ width: 'auto', padding: '4px 8px', gap: 6, display: 'inline-flex', alignItems: 'center' }} title={`${e.metric} ×${e.score.toFixed(2)}${e.special ? ' · ' + e.special.label : ''}`}><Img art={jobArts(e.id)} size={32} alt={e.id} label={e.id} /><span className="small"><b>{JOB_EN[e.id] || e.id}</b><br />{e.metric} ×{e.score.toFixed(2)} · #{e.rank} of {e.of}</span></span>)}</div></div>); })}</div></section>); })}
+    <p className="mut small">Jobs are scored from their own ATK/HP multipliers, stat bonuses, special perk and job skill, then ranked against every job of the same nature (common jobs included).</p></>);
 }
 
 export default function Tiers(){
@@ -41,6 +52,7 @@ export default function Tiers(){
       <p><b>{cur.metric}:</b> {fmtMetric(cur)} · ranks <b>#{cur.rank}</b> of {cur.of} {ROLE_EN[cur.role].toLowerCase()}s{cur.tier === 'SS' ? ' — far above the rest' : ''}.</p>
       <p className="mut small">At Lv 150 (neutral IV, no awakening or gear): ATK {fmtBig(cur.A)} · Max HP {fmtBig(cur.H)}.</p>
       <div className="stack">{cur.skillIds.map(id => <SkillCard key={id} id={id} />)}</div></section>)}
+    <JobSection nat={nat} />
     <section className="sec"><h2>How the score works</h2><ul className="bul small">
       <li><b>Attacker:</b> ATK × (1 + skill damage per second ÷ ATK). Area skills count ×1.35, execute ×1.15, drain and single-hit ×1.1, multi-hit skills count every hit. Uses the strongest awakening tier of its skill.</li>
       <li><b>Tank:</b> Max HP × the durability its skill adds. Shields are valued over a 30-second fight; guard and party damage-reduction skills by how much damage they cut over time; taunt, death-ward and instant-rise get a bonus.</li>

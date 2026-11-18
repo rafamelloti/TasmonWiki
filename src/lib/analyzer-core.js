@@ -178,5 +178,87 @@ export function createAnalyzer(D){
     if (cur && cur.elem && ms.length) { const counter = PH.counterOf(cur.elem), has = ms.some(m => m.element === counter); if (!has && counter) add(1, 'element', { stageElem: cur.elem, counter }); }
     return S.sort((a, b) => b.sev - a.sev);
   }
-  return { analyze, monster, party, elemMult, levelCapAt, PH };
+
+  // ---- team builder ----
+  // teamInfo: everything about one 3-Tasmon team. dps = estimated damage per second (same model as the analyzer).
+  // pvp = a heuristic ranked-match rating: sqrt(offence x durability) with healing, shields, damage reduction, buffs, element spread and ranked passives.
+  function teamInfo(ms, opt = {}){
+    const P = party(ms, opt), e = dpsVs(ms, P, opt.enemyElem || null, null), dps = e.basic + e.skill;
+    let hpSum = 0, hps = 0, shield = 0, dr = 0, buff = 0;
+    for (const m of ms) {
+      hpSum += m.hp; const aws = meta.awakening.skill[m.awakening] || { cooldown: 1 };
+      for (const id of m.skillsEq) {
+        const sk = skills[id]; if (!sk || !sk.cooldown || !sk.power) continue; const cd = Math.max(.5, sk.cooldown * (aws.cooldown || 1) * (1 - P.cdr)), up = Math.min(1, (sk.duration || 0) / cd);
+        if (sk.type === 'heal') hps += sk.power / cd;
+        else if (sk.type === 'guard') { if (sk.kind === 'shield') shield += m.hp * sk.power * 30 / cd; else if (sk.kind !== 'taunt') dr += sk.power * up; }
+        else if (sk.type === 'buff') { let v = sk.power * up; if (sk.kind === 'haste' || sk.kind === 'basic' || sk.kind === 'critup') v *= .5; buff += v; }
+      }
+    }
+    dr = Math.min(.6, dr);
+    const ehp = (hpSum + shield) * (1 + 30 * hps) / (1 - dr), cov = 1 + .05 * (new Set(ms.map(m => m.element)).size - 1), pv = opt.pvp || {};
+    const passives = ms.filter(m => pv[m.speciesId]).map(m => m.speciesId);
+    const rating = Math.sqrt(dps * (1 + buff) * ehp) * cov * (1 + .04 * passives.length);
+    const cost = ms.reduce((a, m) => a + ((opt.cost && opt.cost[m.rarity]) || 0), 0);
+    return { ids: ms.map(m => m.id), cost, dps, dpsB: dps * (1 + buff), basic: e.basic, skill: e.skill, hp: hpSum, ehp, hps, shield, dr, buff, cov, passives, rating, P };
+  }
+
+  // ---- skill loadouts (game rules: 2 equipped skills; any non-signature skill can be inherited from a Tasmon that knows it) ----
+  function skillPool(m, opt = {}){
+    const own = sp[m.speciesId], native = new Set([own?.skill, ...(own?.extraSkills || []), ...(m.raw?.learnedSkills || [])].filter(Boolean)), out = [];
+    for (const id of Object.keys(skills)) { const k = skills[id]; if (!k || !k.cooldown || !k.power || !k.type) continue;
+      if (native.has(id)) { out.push(id); continue; }
+      if (opt.transfer === false || k.signature) continue;
+      if (opt.only && !opt.only.has(id)) continue;
+      if (k.speciesOnly && k.speciesOnly !== m.speciesId && opt.exclusive === false) continue;
+      out.push(id); }
+    return out;
+  }
+  const withSk = (m, ids) => ({ ...m, skillsEq: ids });
+  const scoreOf = (t, mode) => mode === 'pvp' ? t.rating : t.dpsB;
+  // Best 2 skills for one Tasmon on its own, then refined inside the team (coordinate descent), so buffs/heals are valued by the party they serve.
+  function soloLoadout(m, opt){
+    const mode = opt.mode || 'dps', pool = skillPool(m, opt), sc = {};
+    for (const id of pool) sc[id] = scoreOf(teamInfo([withSk(m, [id])], opt), mode);
+    const top = {}; for (const id of pool) { const t = skills[id].type; (top[t] = top[t] || []).push(id); }
+    const cand = []; for (const t of Object.keys(top)) cand.push(...top[t].sort((a, b) => sc[b] - sc[a]).slice(0, 6));
+    return { cand, pool, sc };
+  }
+  function tuneTeam(ms, opt = {}){
+    const mode = opt.mode || 'dps', info = ms.map(m => soloLoadout(m, opt));
+    let cur = ms.map((m, i) => { const c = info[i].cand.slice().sort((a, b) => info[i].sc[b] - info[i].sc[a]); return withSk(m, c.slice(0, 2)); });
+    for (let pass = 0; pass < 3; pass++) { let changed = false;
+      for (let i = 0; i < cur.length; i++) { const c = info[i].cand; let best = scoreOf(teamInfo(cur, opt), mode), pick = cur[i].skillsEq;
+        for (let a = 0; a < c.length; a++) for (let b = a + 1; b < c.length; b++) { const t = cur.slice(); t[i] = withSk(cur[i], [c[a], c[b]]); const v = scoreOf(teamInfo(t, opt), mode); if (v > best * 1.00001) { best = v; pick = [c[a], c[b]]; } }
+        if (pick !== cur[i].skillsEq) { cur[i] = withSk(cur[i], pick); changed = true; } }
+      if (!changed) break; }
+    return { mons: cur, info: teamInfo(cur, opt) };
+  }
+  function bestTeams(pool, opt = {}){
+    if (opt.tune && !opt._tuned) { const o2 = { ...opt, _tuned: 1, tune: false }; pool = pool.map(m => { const si = soloLoadout(m, opt), c = si.cand.slice().sort((a, b) => si.sc[b] - si.sc[a]); return withSk(m, c.slice(0, 2)); });
+      const res = bestTeams(pool, o2); return res.map(t => { const byId = Object.fromEntries(pool.map(m => [m.id, m])), r = tuneTeam(t.ids.map(i => byId[i]), opt); return { ...r.info, loadout: r.mons.map(m => ({ id: m.id, skills: m.skillsEq })) }; }).sort((a, b) => scoreOf(b, opt.mode || 'dps') - scoreOf(a, opt.mode || 'dps')); }
+    const size = opt.size || 3, top = opt.top || 5, mode = opt.mode || 'dps', key = mode === 'pvp' ? 'rating' : 'dpsB';
+    const pick = (f, n) => pool.slice().sort((a, b) => f(b) - f(a)).slice(0, n), set = new Map();
+    const heal = m => m.skillsEq.reduce((a, id) => { const k = skills[id]; return a + (k && k.type === 'heal' && k.cooldown ? k.power / k.cooldown : 0); }, 0), buffv = m => m.skillsEq.reduce((a, id) => { const k = skills[id]; return a + (k && k.type === 'buff' && k.cooldown ? k.power * Math.min(1, (k.duration || 0) / k.cooldown) : 0); }, 0);
+    for (const m of pick(m => m.dpsGame, mode === 'pvp' ? 22 : 38)) set.set(m.id, m);
+    if (mode === 'pvp') { for (const m of pick(m => m.hp, 14)) set.set(m.id, m); for (const m of pick(heal, 8)) set.set(m.id, m); for (const m of pick(buffv, 8)) set.set(m.id, m); }
+    const cost = opt.cost || null, cap = opt.cap || Infinity, cOf = m => (cost && cost[m.rarity]) || 0;
+    if (cost && isFinite(cap)) for (const k of new Set(pool.map(cOf))) for (const m of pick(m => (m.dpsGame || 0), 8).concat(pool.filter(m => cOf(m) === k).sort((a, b) => b.dpsGame - a.dpsGame).slice(0, 10), pool.filter(m => cOf(m) === k).sort((a, b) => b.hp - a.hp).slice(0, 5))) set.set(m.id, m);
+    const c = [...set.values()], out = [];
+    const push = t => { out.push(t); if (out.length > top * 6) { out.sort((a, b) => b[key] - a[key]); out.length = top * 3; } };
+    const n = c.length, o = { ...opt };
+    if (n <= size) { const t = n ? teamInfo(c, o) : null; return t && t.cost <= cap ? [t] : []; }
+    const rec = (start, cur, sum) => { if (cur.length === size) { push(teamInfo(cur, o)); return; } for (let i = start; i < n; i++) { const w = sum + cOf(c[i]); if (w > cap) continue; cur.push(c[i]); rec(i + 1, cur, w); cur.pop(); } };
+    rec(0, [], 0);
+    out.sort((a, b) => b[key] - a[key]); return out.slice(0, top);
+  }
+  // Ranked match: everyone is Lv 60 with no gear and stats come from the species alone (as shown on the game's ranked cards),
+  // so the pool is one entry per owned species at Lv 60, neutral IV, no awakening/job, with the best 2 of its skills equipped.
+  function rankedPool(ms){
+    const seen = {}, out = [];
+    for (const m of ms) { const id = m.speciesId, sp = species[id]; if (!sp || seen[id]) continue; seen[id] = 1;
+      const ids = [sp.skill, ...(sp.extraSkills || [])].filter(k => skills[k] && skills[k].cooldown && skills[k].power).sort((a, b) => skills[b].power / skills[b].cooldown - skills[a].power / skills[a].cooldown).slice(0, 2);
+      const r = monster({ id: 'r_' + id, speciesId: id, level: 60, equippedSkills: ids }); if (r) { r.id = 'r_' + id; out.push(r); } }
+    return out;
+  }
+  return { analyze, monster, party, elemMult, levelCapAt, PH, teamInfo, bestTeams, rankedPool, skillPool, tuneTeam };
 }

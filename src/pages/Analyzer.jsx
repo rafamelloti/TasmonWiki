@@ -9,6 +9,8 @@ import { Img, monArts, elemArts } from '../lib/img.jsx';
 import { TasmonName, RarTag } from '../components.jsx';
 import { fmtBig, romaji } from '../lib/text.js';
 import { collect, DEX_MILESTONES, availability } from '../lib/collection.js';
+import { GearViewer } from './TeamBuilder.jsx';
+import { getSaved, setSaved } from '../lib/savestore.js';
 import { TierBadge, TIERS, TIER_COLOR } from './Tiers.jsx';
 import { RARITIES, ROLES } from '../lib/data.js';
 
@@ -59,11 +61,11 @@ const pctTxt = v => { const p = v * 100; for (const d of [2, 3, 4, 5]) { const r
 const Bar = ({ v, c = '#4a8cf0' }) => <div className="anshare" style={{ minWidth: 120 }}><i style={{ width: Math.max(2, Math.min(1, v) * 100) + '%', background: c }} /></div>;
 const MonLinks = ({ id }) => <span className="small"><Link to={`/tasmons/${id}`}>Page</Link> · <Link to={`/tasmons/${id}/sim`}>Simulator</Link> · <TierBadge id={id} /></span>;
 
-function Collection({ col }){
+function Collection({ col, save }){
   const [tab, setTab] = useState('mons'), [nat, setNat] = useState(''), [rar, setRar] = useState(''), [lim, setLim] = useState(40), [showMiss, setShowMiss] = useState(30), [mq, setMq] = useState('');
   const D = col.dex, rows = col.rows.filter(r => { const s = speciesById[r.speciesId]; return (!nat || s.role === nat) && (!rar || s.rarity === rar); });
   const missRar = RARITIES.slice().reverse().map(r => [r, D.miss.filter(x => x.rarity === r)]).filter(x => x[1].length);
-  const TABS = [['mons', `Tasmons (${col.totalMons})`], ['dex', `DEX (${D.have.length}/${D.total})`], ['eggs', `Eggs (${col.eggs.n})`], ['inv', 'Inventory & progress']];
+  const TABS = [['mons', `Tasmons (${col.totalMons})`], ['dex', `DEX (${D.have.length}/${D.total})`], ['eggs', `Eggs (${col.eggs.n})`], ['gear', 'Gear'], ['inv', 'Inventory & progress']];
   return (<section className="sec"><h2>Everything in your save</h2>
     <div className="grid4">
       <div className="card stat"><div className="mut small">Tasmons owned</div><div className="big">{col.totalMons}</div><div className="mut small">{col.ownedCount} different species</div></div>
@@ -103,6 +105,8 @@ function Collection({ col }){
       {col.eggs.known.length > 0 && <><h3>Eggs with a known result</h3><div className="row wrap">{col.eggs.known.map((e, i) => { const x = speciesById[e.resultSpecies]; return <Link key={i} to={`/tasmons/${x.id}`} className="chip"><Img art={monArts(x)} size={28} alt={x.id} label={x.id} /><span>{nameOf(x) || romaji(x.jp)}</span></Link>; })}</div></>}
     </>)}
 
+    {tab === 'gear' && <GearViewer save={save} />}
+
     {tab === 'inv' && (<div className="grid2"><div>
       <h3>Inventory</h3><table className="tbl small"><tbody>
         <tr><td>Bag</td><td>{col.inv.items}{col.inv.invCap ? ` / ${col.inv.invCap}` : ''}</td></tr><tr><td>Storage</td><td>{col.inv.storage}{col.inv.storageCap ? ` / ${col.inv.storageCap}` : ''}</td></tr>
@@ -135,14 +139,14 @@ function Progress({ res }){
 }
 
 export default function Analyzer(){
-  const [copied, setCopied] = useState(false), [save, setSave] = useState(null), [fname, setFname] = useState(''), [err, setErr] = useState(''), [diff, setDiff] = useState(null), [interval, setInterval_] = useState(1), [drag, setDrag] = useState(false);
+  const [copied, setCopied] = useState(false), [save, setSave] = useState(() => getSaved()?.save || null), [fname, setFname] = useState(() => getSaved()?.fname || ''), [err, setErr] = useState(''), [diff, setDiff] = useState(null), [interval, setInterval_] = useState(1), [drag, setDrag] = useState(false);
   const inp = useRef(null);
   async function load(f){
     setErr('');
     try {
       let t = await f.text(); if (SEAL.is(t)) t = SEAL.open(t); t = t.replace(/^﻿/, '');
       const d = JSON.parse(t); if (!d || typeof d !== 'object' || !d.monsters) throw new Error('This does not look like a TASMON save (no “monsters” field).');
-      setSave(d); setFname(f.name); setDiff(null);
+      setSave(d); setFname(f.name); setDiff(null); setSaved(d, f.name);
     } catch (e) { setSave(null); setErr('Could not read this file: ' + e.message); }
   }
   async function copyPath(){
@@ -166,7 +170,7 @@ export default function Analyzer(){
     {res && !res.ok && <p className="warn">⚠ No monsters found in this save.</p>}
     {res?.ok && res.party.length === 0 && <p className="warn">⚠ This save has no active party, so there is nothing to analyze.</p>}
     {res?.ok && <Progress res={res} />}
-    {col && <Collection col={col} />}
+    {col && <Collection col={col} save={save} />}
     {res?.ok && res.party.length > 0 && (<>
       <section className="sec"><h2>Overview</h2>
         <div className="grid4">

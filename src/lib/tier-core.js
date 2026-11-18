@@ -58,3 +58,30 @@ export function buildTiers(D){
   }
   return { list, by, byId: Object.fromEntries(list.map(e => [e.id, e])) };
 }
+
+// Job tier list. Jobs are ranked inside their nature (Attacker / Tank / Healer / Buffer) against every other job of that nature,
+// from the job's own multipliers, stat bonuses, its special perk and its job skill (strongest tier). Common jobs are included so a rare or hidden job is judged against them.
+export function buildJobTiers(D){
+  const { jobs, specials, skills } = D, WINDOW = 30;
+  const hitsOf = sk => { const m = /hits (\d+) times/i.exec(sk.desc || ''); return m ? +m[1] : 1; };
+  const KF = { aoe: 1.35, execute: 1.15, drain: 1.1, single: 1.1 };
+  const best = sk => { const t = sk.tiers && sk.tiers.length ? sk.tiers[sk.tiers.length - 1] : null; return { power: t?.power ?? sk.power, cooldown: t?.cooldown ?? sk.cooldown }; };
+  const list = jobs.map(j => {
+    const sp = specials[j.id.startsWith('j') ? j.id : 'j' + j.id] || specials['j' + j.id] || null, sk = j.skill && skills[j.skill] ? skills[j.skill] : null, b = sk ? best(sk) : { power: 0, cooldown: 0 };
+    const st = { atkSpeed: 0, critRate: 0, defCut: 0, skillPower: 0, cdr: 0, ...(j.stat || {}) }, spm = sp?.mult || {}, sps = sp?.stat || {};
+    const am = (j.mult?.atk ?? 1) * (spm.atk ?? 1), hm = (j.mult?.hp ?? 1) * (spm.hp ?? 1), spw = st.skillPower + (sps.skillPower || 0), cdr = st.cdr + (sps.cdr || 0), crit = st.critRate + (sps.critRate || 0), ase = st.atkSpeed + (sps.atkSpeed || 0);
+    let score = 0, metric = '';
+    const ok = sk && b.cooldown;
+    if (j.role === 'nuke') { const k = ok && sk.type === 'nuke' ? b.power * (1 + spw) * (sk.kind === 'multi' ? hitsOf(sk) : 1) * (KF[sk.kind] || 1) / b.cooldown : 0; score = am * (1 + ase) * (1 + crit * .5) * (1 + k); metric = 'Damage multiplier'; }
+    else if (j.role === 'guard') { let f = 1; if (ok && sk.type === 'guard') { const up = Math.min(1, (sk.duration || 0) / b.cooldown); f = sk.kind === 'shield' ? 1 + b.power * WINDOW / b.cooldown : sk.kind === 'taunt' ? 1.25 : 1 / Math.max(.2, 1 - b.power * up); } score = hm * (1 + st.defCut * 3) * f; metric = 'Durability multiplier'; }
+    else if (j.role === 'heal') { const h = ok && sk.type === 'heal' ? b.power * (1 + spw) / b.cooldown : 0; score = (.05 + h) * (1 + spw) * (1 + cdr) * Math.sqrt(hm); metric = 'Healing strength'; }
+    else { let u = 0; if (ok && sk.type === 'buff') { const up = Math.min(1, (sk.duration || 0) / b.cooldown); u = b.power * up * (sk.kind === 'haste' || sk.kind === 'basic' || sk.kind === 'critup' ? .5 : 1); } score = (.05 + u) * (1 + cdr) * Math.sqrt(am); metric = 'Party buff strength'; }
+    return { id: j.id, role: j.role, rare: !!j.rare, hidden: !!j.hidden, tier: j.tier, score: Math.max(1e-6, score), metric, am, hm, special: sp, skillId: sk ? j.skill : null, stat: st };
+  });
+  const by = {}; for (const e of list) (by[e.role] = by[e.role] || []).push(e);
+  const BANDS = [['S', .15], ['A', .32], ['B', .52], ['C', .72], ['D', .86], ['E', .95], ['F', 1.01]];
+  for (const arr of Object.values(by)) { arr.sort((a, b) => b.score - a.score); arr.forEach((e, k) => { e.rank = k + 1; e.of = arr.length; });
+    let i = 0; while (i < arr.length) { let j = i; const key = arr[i].score.toPrecision(4); while (j < arr.length && arr[j].score.toPrecision(4) === key) j++;
+      const tier = (BANDS.find(b => i / arr.length < b[1]) || BANDS[BANDS.length - 1])[0]; for (let q = i; q < j; q++) arr[q].tier2 = tier; i = j; } }
+  return { list, by, byId: Object.fromEntries(list.map(e => [e.id, e])) };
+}
