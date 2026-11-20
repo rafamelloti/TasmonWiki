@@ -1,7 +1,7 @@
 // "Every Tasmon in the game" mode: a theoretical maximum build for each species so teams can be compared without a save.
 // Lv 150, max awakening, solid pinnacle, and a full set of top-rarity gear (6 pieces + 3 accessories) rolled for the Tasmon's nature.
 import { BASE_BY_PART, CHARM_KINDS, LINES, baseMax, traitMax } from './gear.js';
-const BEST = {
+export const BEST = {
   nuke: ['atkPct', 'critDmg', 'critRate', 'atkSpeed', 'skillPower', 'basicAtkPct', 'atkFlat'],
   guard: ['hpPct', 'defPct', 'cdr', 'hpFlat', 'skillPower'],
   heal: ['skillPower', 'cdr', 'hpPct', 'healPower', 'hpFlat'],

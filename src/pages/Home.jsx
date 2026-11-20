@@ -18,6 +18,7 @@ export default function Home(){
     ['/mechanics', 'Mechanics', 'Eggs · awakening', 'Egg odds, awakening, expeditions and invite partners.'],
     ['/tiers', 'Tasmon Tier List', 'Best Tasmons', 'SS to F rankings for attackers, tanks, healers and buffers.'],
     ['/analyzer', 'Save Analyzer', 'Upload your save', 'Estimated DPS, clear time per stage and what to improve — all in your browser.'],
+    ['/guides', 'Guides', 'Beginner to advanced', 'Builds, progression path, resource tips and common mistakes — turn the data into decisions.'],
     ['/team-builder', 'Team Builder', 'Best DPS and PvP teams', 'Build the strongest team from your save, with the best skills to inherit for each Tasmon.'],
     ['/tower', 'Elemental Tower', '6 towers · 50 floors', 'Talismans, elemental fruits, eggs and the DLC pass.'],
     ['/hunt', 'Hero Hunt', '4 volumes', 'Hero challenge stages, modes and rewards.'],

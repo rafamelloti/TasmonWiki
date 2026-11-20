@@ -1,0 +1,523 @@
+[
+ {
+  "id": "start",
+  "en": "Start here",
+  "pt": "Comece aqui",
+  "blocks": [
+   {
+    "t": "p",
+    "en": "TASMON is an idle game: your team of three fights on its own, so your job is to decide who fights, how strong they get and what they equip. These guides turn the wiki’s numbers into practical decisions. Items marked “Recommendation” are our own advice based on the game’s data, not official rules.",
+    "pt": "TASMON é um jogo idle: seu time de três luta sozinho, então o seu trabalho é decidir quem luta, o quanto cresce e o que equipa. Estes guias transformam os números da wiki em decisões práticas. Itens marcados como “Recomendação” são conselhos nossos baseados nos dados do jogo, não regras oficiais."
+   },
+   {
+    "t": "h",
+    "en": "Your first steps",
+    "pt": "Seus primeiros passos"
+   },
+   {
+    "t": "ol",
+    "items": [
+     {
+      "en": "Hatch eggs and fill a team of 3. Egg drops are boosted heavily at the start: ×25 while you own a single monster or egg, and ×3 until the starter team is complete.",
+      "pt": "Choque ovos e complete um time de 3. As quedas de ovos são muito aumentadas no começo: ×25 enquanto você tem um único monstro ou ovo, e ×3 até o time inicial ficar completo."
+     },
+     {
+      "en": "Cover the natures. Every Tasmon is an Attacker, Tank, Healer or Buffer. A balanced team has an Attacker for damage plus Tank, Healer or Buffer support.",
+      "pt": "Cubra as naturezas. Todo Tasmon é Atacante, Tanque, Curandeiro ou Suporte. Um time equilibrado tem um Atacante para o dano mais Tanque, Curandeiro ou Suporte."
+     },
+     {
+      "en": "Clear Difficulty 1. Until every stage is cleared there is an early-game egg bonus (×1.5). The next difficulty opens when you clear stage 100 of the previous one.",
+      "pt": "Complete a Dificuldade 1. Até limpar todas as fases há um bônus de ovos de início de jogo (×1,5). A dificuldade seguinte abre quando você limpa a fase 100 da anterior."
+     },
+     {
+      "en": "Evolve at Lv30 and Lv60. Each evolution gives the Tasmon a job and a new look.",
+      "pt": "Evolua no Nv30 e no Nv60. Cada evolução dá um job e um visual novo ao Tasmon."
+     },
+     {
+      "en": "Load your save in the Save Analyzer to see your damage per second, the clear time of each stage and what to improve first.",
+      "pt": "Carregue o seu save no Save Analyzer para ver o seu dano por segundo, o tempo de cada fase e o que melhorar primeiro."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "en": "Elements: the rule you should never ignore",
+    "pt": "Elementos: a regra que você nunca deve ignorar"
+   },
+   {
+    "t": "p",
+    "en": "Fire beats Wind, Wind beats Earth, Earth beats Water and Water beats Fire. Light and Dark beat each other. An advantage deals ×1.5 damage and a disadvantage only ×0.55 — a swing of almost three to one.",
+    "pt": "Fogo vence Vento, Vento vence Terra, Terra vence Água e Água vence Fogo. Luz e Trevas vencem uma à outra. A vantagem causa ×1,5 de dano e a desvantagem só ×0,55 — uma diferença de quase três para um."
+   },
+   {
+    "t": "widget",
+    "id": "elements"
+   },
+   {
+    "t": "widget",
+    "id": "team"
+   },
+   {
+    "t": "links",
+    "items": [
+     {
+      "to": "/elements",
+      "en": "Elements page",
+      "pt": "Página de Elementos"
+     },
+     {
+      "to": "/analyzer",
+      "en": "Save Analyzer",
+      "pt": "Save Analyzer"
+     },
+     {
+      "to": "/tiers",
+      "en": "Tasmon Tier List",
+      "pt": "Tasmon Tier List"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "progress",
+  "en": "Progression path",
+  "pt": "Caminho de progressão",
+  "blocks": [
+   {
+    "t": "p",
+    "en": "Progress in this game comes from a few big multipliers. Knowing their order of importance saves gold, stones and time.",
+    "pt": "O progresso neste jogo vem de poucos multiplicadores grandes. Saber a ordem de importância economiza ouro, pedras e tempo."
+   },
+   {
+    "t": "h",
+    "en": "What actually makes you stronger",
+    "pt": "O que realmente deixa você mais forte"
+   },
+   {
+    "t": "ul",
+    "items": [
+     {
+      "en": "Level cap: it rises in steps the deeper you clear, starting at Lv100 and reaching Lv150 at the top. Pushing stages is what lets your Tasmons keep growing. The Save Analyzer shows your current cap.",
+      "pt": "Limite de nível: sobe em degraus conforme você avança, começando no Nv100 e chegando ao Nv150. Avançar fases é o que permite seus Tasmons continuarem crescendo. O Save Analyzer mostra o seu limite atual."
+     },
+     {
+      "en": "Awakening: the biggest single multiplier. Awakening Ⅵ gives ATK ×6 and Max HP ×4. Awakened Tasmons come from hatching eggs (wild chance 0.8%).",
+      "pt": "Despertar: o maior multiplicador isolado. Despertar Ⅵ dá ATQ ×6 e HP máx. ×4. Tasmons despertos vêm de eggs chocados (chance selvagem de 0,8%)."
+     },
+     {
+      "en": "Pinnacle ritual: once, at Lv90 on the final evolution. “Solid” guarantees ATK ×1.15 and Max HP ×1.15 for stars × 9,000 gold.",
+      "pt": "Ritual Pinnacle: uma única vez, no Nv90 da evolução final. “Solid” garante ATQ ×1,15 e HP máx. ×1,15 por estrelas × 9.000 de ouro."
+     },
+     {
+      "en": "Jobs: Rare and Hidden jobs have far bigger multipliers than normal ones, and they bring their own skill as a 3rd skill.",
+      "pt": "Jobs: jobs Raros e Ocultos têm multiplicadores bem maiores que os normais e trazem a própria skill como 3º golpe."
+     },
+     {
+      "en": "Gear: six pieces plus accessories with rolled stats and set bonuses. Strong gear lifts every Tasmon that wears it.",
+      "pt": "Equipamento: seis peças mais acessórios com atributos sorteados e bônus de set. Equipamento forte eleva qualquer Tasmon que o use."
+     },
+     {
+      "en": "Sphere: every 2 levels give 3 Sphere points to spend on perks, so a Lv150 Tasmon has 225 points.",
+      "pt": "Sphere: a cada 2 níveis você ganha 3 pontos de Sphere para gastar em perks; um Tasmon Nv150 tem 225 pontos."
+     },
+     {
+      "en": "DEX: every milestone gives a permanent bonus (10% gold, 25% egg drops, 50% EXP, 75% ATK +3%, 100% complete bonus). Collecting new species is progress even if you never use them.",
+      "pt": "DEX: cada marco dá um bônus permanente (10% ouro, 25% ovos, 50% EXP, 75% ATQ +3%, 100% bônus de completo). Coletar espécies novas é progresso mesmo que você nunca as use."
+     }
+    ]
+   },
+   {
+    "t": "widget",
+    "id": "awakening"
+   },
+   {
+    "t": "widget",
+    "id": "dex"
+   },
+   {
+    "t": "h",
+    "en": "Recommendation: a sensible order",
+    "pt": "Recomendação: uma ordem sensata"
+   },
+   {
+    "t": "ol",
+    "items": [
+     {
+      "en": "Clear Difficulty 1 and fill the DEX with whatever you hatch.",
+      "pt": "Complete a Dificuldade 1 e preencha a DEX com o que você chocar."
+     },
+     {
+      "en": "Pick your core three and evolve only them at Lv30 and Lv60 — evolutions cost gold and a stone each.",
+      "pt": "Escolha seus três principais e evolua só eles no Nv30 e no Nv60 — cada evolução custa ouro e uma pedra."
+     },
+     {
+      "en": "Put your best gear on the core team and spend Sphere points on damage (Attackers) or survival (Tanks).",
+      "pt": "Coloque o melhor equipamento no time principal e gaste os pontos de Sphere em dano (Atacantes) ou sobrevivência (Tanques)."
+     },
+     {
+      "en": "Keep pushing stages to raise the level cap, and level the core team up to it.",
+      "pt": "Continue avançando nas fases para subir o limite de nível e leve o time principal até ele."
+     },
+     {
+      "en": "Chase awakening and a Rare/Hidden job for the core Attacker, then use the Pinnacle ritual at Lv90.",
+      "pt": "Busque despertar e um job Raro/Oculto para o Atacante principal e depois faça o ritual Pinnacle no Nv90."
+     },
+     {
+      "en": "Re-check with the Save Analyzer after every big upgrade: it shows which stage is now your slowest.",
+      "pt": "Confira de novo no Save Analyzer depois de cada grande melhoria: ele mostra qual fase é agora a sua mais lenta."
+     }
+    ]
+   },
+   {
+    "t": "widget",
+    "id": "checklist"
+   },
+   {
+    "t": "links",
+    "items": [
+     {
+      "to": "/mechanics",
+      "en": "Mechanics",
+      "pt": "Mecânicas"
+     },
+     {
+      "to": "/jobs",
+      "en": "Jobs",
+      "pt": "Jobs"
+     },
+     {
+      "to": "/dex",
+      "en": "DEX",
+      "pt": "DEX"
+     },
+     {
+      "to": "/stages",
+      "en": "Stages",
+      "pt": "Fases"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "builds",
+  "en": "Builds by nature",
+  "pt": "Builds por natureza",
+  "blocks": [
+   {
+    "t": "p",
+    "en": "Recommendation: build each Tasmon for its nature. The stat priorities below follow how the game’s formulas reward each role (the same model the Save Analyzer and Team Builder use).",
+    "pt": "Recomendação: monte cada Tasmon para a sua natureza. As prioridades de atributos abaixo seguem como as fórmulas do jogo recompensam cada função (o mesmo modelo que o Save Analyzer e o Team Builder usam)."
+   },
+   {
+    "t": "ul",
+    "items": [
+     {
+      "en": "Attacker — damage dealer. Stats: ATK %, crit damage, crit rate, attack speed, skill power. Skills: two attack skills; compare pairs in the Team Builder. Best with a Rare/Hidden Attacker job.",
+      "pt": "Atacante — causa o dano. Atributos: ATQ %, dano crítico, taxa crítica, velocidade de ataque, poder de skill. Golpes: dois golpes de ataque; compare pares no Team Builder. Melhor com um job Raro/Oculto de Atacante."
+     },
+     {
+      "en": "Tank — keeps the team alive. Stats: Max HP %, damage-taken reduction, cooldown reduction. Skills: shields, guard and taunt. Shields and damage reduction are worth more the shorter their cooldown.",
+      "pt": "Tanque — mantém o time vivo. Atributos: HP máx. %, redução de dano recebido, redução de recarga. Golpes: escudos, guarda e provocação. Escudos e redução de dano valem mais quanto menor a recarga."
+     },
+     {
+      "en": "Healer — keeps HP up. Stats: skill power, cooldown reduction, Max HP. Heals scale with skill power, so a Common healer can match a rarer one — rarity matters less here.",
+      "pt": "Curandeiro — mantém o HP. Atributos: poder de skill, redução de recarga, HP máx. A cura escala com poder de skill, então um curandeiro Comum pode igualar um mais raro — raridade importa menos aqui."
+     },
+     {
+      "en": "Buffer — raises the team’s damage. Stats: cooldown reduction and skill power, so buffs stay up (uptime = duration ÷ cooldown). ATK buffs count in full; haste, basic-attack and crit buffs count less.",
+      "pt": "Suporte — aumenta o dano do time. Atributos: redução de recarga e poder de skill, para os buffs ficarem ativos (tempo ativo = duração ÷ recarga). Buffs de ATQ contam por inteiro; velocidade, ataque básico e crítico contam menos."
+     }
+    ]
+   },
+   {
+    "t": "widget",
+    "id": "stats"
+   },
+   {
+    "t": "h",
+    "en": "Team shapes to try",
+    "pt": "Formatos de time para testar"
+   },
+   {
+    "t": "ul",
+    "items": [
+     {
+      "en": "Safe progress: Attacker + Tank + Healer. Slower, but it survives hard stages and bosses.",
+      "pt": "Progresso seguro: Atacante + Tanque + Curandeiro. Mais lento, mas sobrevive a fases difíceis e chefes."
+     },
+     {
+      "en": "Fast clears: two Attackers + a Buffer. Good when the team out-damages the stage easily.",
+      "pt": "Limpeza rápida: dois Atacantes + um Suporte. Bom quando o time supera facilmente o dano da fase."
+     },
+     {
+      "en": "Glass cannon: three Attackers. The highest DPS on paper, with no safety net.",
+      "pt": "Canhão de vidro: três Atacantes. O maior DPS no papel, sem rede de segurança."
+     }
+    ]
+   },
+   {
+    "t": "tip",
+    "en": "These are rules of thumb. The Team Builder can test every combination of your Tasmons — or of every Tasmon in the game — and shows the best two skills for each member, including skills you can inherit.",
+    "pt": "São regras práticas. O Team Builder testa todas as combinações dos seus Tasmons — ou de todos os Tasmons do jogo — e mostra os dois melhores golpes de cada membro, inclusive golpes que você pode herdar."
+   },
+   {
+    "t": "h",
+    "en": "Skills: the rules",
+    "pt": "Golpes: as regras"
+   },
+   {
+    "t": "ul",
+    "items": [
+     {
+      "en": "A Tasmon equips 2 skills.",
+      "pt": "Um Tasmon equipa 2 golpes."
+     },
+     {
+      "en": "Any skill that is not a signature skill can be inherited by feeding the Tasmon a monster that already knows it.",
+      "pt": "Qualquer golpe que não seja signature pode ser herdado alimentando o Tasmon com um monstro que já o saiba."
+     },
+     {
+      "en": "Rare and Hidden jobs add their own job skill as a 3rd skill.",
+      "pt": "Jobs Raros e Ocultos adicionam o próprio golpe do job como 3º golpe."
+     }
+    ]
+   },
+   {
+    "t": "widget",
+    "id": "inherit"
+   },
+   {
+    "t": "links",
+    "items": [
+     {
+      "to": "/team-builder",
+      "en": "Team Builder",
+      "pt": "Team Builder"
+     },
+     {
+      "to": "/tiers",
+      "en": "Tasmon Tier List",
+      "pt": "Tasmon Tier List"
+     },
+     {
+      "to": "/equipment",
+      "en": "Equipment",
+      "pt": "Equipamentos"
+     },
+     {
+      "to": "/skills",
+      "en": "Skills",
+      "pt": "Golpes"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "resources",
+  "en": "Managing resources",
+  "pt": "Gerenciando recursos",
+  "blocks": [
+   {
+    "t": "h",
+    "en": "Evolution Stones and gold",
+    "pt": "Pedras de Evolução e ouro"
+   },
+   {
+    "t": "ul",
+    "items": [
+     {
+      "en": "Every evolution needs one Evolution Stone: a role stone (Attacker, Tank, Healer or Buffer) for the normal choice, a Random stone for the Random choice.",
+      "pt": "Toda evolução exige uma Pedra de Evolução: uma pedra de função (Atacante, Tanque, Curandeiro ou Suporte) para a escolha normal, uma pedra Aleatória para a escolha Aleatória."
+     },
+     {
+      "en": "Role stones drop from normal kills (0.06%) and Act bosses (35%). Crafting: 3 role stones of other roles make a role stone of the role you want; 5 role stones make a Random stone.",
+      "pt": "Pedras de função caem de monstros comuns (0,06%) e de chefes de Ato (35%). Criação: 3 pedras de outras funções fazem uma pedra da função que você quer; 5 pedras de função fazem uma pedra Aleatória."
+     },
+     {
+      "en": "A Random evolution costs ×4 gold and fails 25% of the time — the gold and the stone are lost and that step can never be tried again on that Tasmon. Rare Job and Hidden Job stones never fail.",
+      "pt": "Uma evolução Aleatória custa ×4 de ouro e falha em 25% das vezes — o ouro e a pedra se perdem e aquela etapa nunca mais pode ser tentada naquele Tasmon. Pedras de Job Raro e Oculto nunca falham."
+     },
+     {
+      "en": "Evolution gold grows quickly with rarity and is ten times higher for the second evolution, so evolve rare Tasmons only when you are sure you will use them.",
+      "pt": "O ouro da evolução cresce rápido com a raridade e é dez vezes maior na segunda evolução; evolua Tasmons raros só quando tiver certeza de que vai usá-los."
+     }
+    ]
+   },
+   {
+    "t": "widget",
+    "id": "evolution"
+   },
+   {
+    "t": "widget",
+    "id": "stones"
+   },
+   {
+    "t": "h",
+    "en": "Eggs",
+    "pt": "Ovos"
+   },
+   {
+    "t": "ul",
+    "items": [
+     {
+      "en": "Each defeated monster has a 0.12% base chance to drop an egg, multiplied by your phase, DEX milestones, awakenings, perks, jobs, talismans and seasonal events.",
+      "pt": "Cada monstro derrotado tem 0,12% de chance base de dropar um ovo, multiplicada pela sua fase, marcos da DEX, despertares, perks, jobs, talismãs e eventos sazonais."
+     },
+     {
+      "en": "Expeditions send Tasmons away for hours: longer plans give more EXP and a better egg chance, and hatch expedition-exclusive species. Gear worn by an expedition Tasmon is locked until it returns.",
+      "pt": "Expedições mandam Tasmons embora por horas: planos mais longos dão mais EXP e melhor chance de ovo, e chocam espécies exclusivas de expedição. O equipamento de um Tasmon em expedição fica travado até ele voltar."
+     },
+     {
+      "en": "Check Events for seasonal species and egg bonuses before spending your time on a limited banner.",
+      "pt": "Veja Eventos para espécies sazonais e bônus de ovos antes de gastar o seu tempo em algo limitado."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "en": "Hero Growth",
+    "pt": "Crescimento do Herói"
+   },
+   {
+    "t": "p",
+    "en": "Unlocked after clearing stage 7 in Death mode with a Hero Series Vol.1 hero. Points, Spheres and Keystones are limited by the stages you cleared, so spend them on the stats your main team uses.",
+    "pt": "Liberado após limpar a fase 7 no modo Death com um herói da Hero Series Vol.1. Pontos, Spheres e Keystones são limitados pelas fases limpas, então gaste nos atributos que o seu time principal usa."
+   },
+   {
+    "t": "links",
+    "items": [
+     {
+      "to": "/mechanics",
+      "en": "Mechanics",
+      "pt": "Mecânicas"
+     },
+     {
+      "to": "/events",
+      "en": "Events",
+      "pt": "Eventos"
+     },
+     {
+      "to": "/hunt",
+      "en": "Hero Hunt",
+      "pt": "Hero Hunt"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mistakes",
+  "en": "Common mistakes",
+  "pt": "Erros comuns",
+  "blocks": [
+   {
+    "t": "warn",
+    "en": "Using a Random evolution without a guarantee stone. One failure in four loses the gold and the stone and locks that evolution step for that Tasmon.",
+    "pt": "Usar evolução Aleatória sem uma pedra de garantia. Uma falha em quatro perde o ouro e a pedra e trava aquela etapa de evolução no Tasmon."
+   },
+   {
+    "t": "warn",
+    "en": "Evolving every Tasmon you hatch. Each evolution costs gold and a stone; first pick the three you will really use.",
+    "pt": "Evoluir todo Tasmon que você choca. Cada evolução custa ouro e uma pedra; primeiro escolha os três que você realmente vai usar."
+   },
+   {
+    "t": "warn",
+    "en": "Ignoring elements. Fighting at a disadvantage cuts damage to ×0.55 while an advantage gives ×1.5. A weaker Tasmon with the right element can beat a stronger one.",
+    "pt": "Ignorar elementos. Lutar em desvantagem reduz o dano para ×0,55 enquanto a vantagem dá ×1,5. Um Tasmon mais fraco com o elemento certo pode vencer um mais forte."
+   },
+   {
+    "t": "warn",
+    "en": "Leaving a weak skill equipped. A Tasmon equips only 2 skills, so a poor one wastes half its kit. Check the Team Builder for better skills to inherit.",
+    "pt": "Deixar um golpe fraco equipado. Um Tasmon equipa só 2 golpes, então um ruim desperdiça metade do seu kit. Veja no Team Builder golpes melhores para herdar."
+   },
+   {
+    "t": "warn",
+    "en": "Gambling the Pinnacle ritual on your main damage dealer. It can be done only once; Solid is guaranteed ATK ×1.15 and Max HP ×1.15, while the gamble gives nothing 78% of the time (Hidden job 2%, Awakening +1 10%, Shiny 10%).",
+    "pt": "Apostar no ritual Pinnacle no seu principal causador de dano. Só pode ser feito uma vez; Solid garante ATQ ×1,15 e HP máx. ×1,15, enquanto a aposta não dá nada em 78% dos casos (job Oculto 2%, Despertar +1 10%, Shiny 10%)."
+   },
+   {
+    "t": "warn",
+    "en": "Moving gear onto a Tasmon that is on an expedition. Its gear cannot be swapped until it comes back.",
+    "pt": "Mexer no equipamento de um Tasmon que está em expedição. O equipamento dele não pode ser trocado até ele voltar."
+   },
+   {
+    "t": "warn",
+    "en": "Training for Ranked PvP. In a Ranked Match everyone fights at Lv60 with no gear and stats come from the species alone; what matters is the species, its skills and the team’s point cost.",
+    "pt": "Treinar para o PvP Ranqueado. Na Partida Ranqueada todos lutam no Nv60 sem equipamento e os atributos vêm só da espécie; o que importa é a espécie, seus golpes e o custo de pontos do time."
+   },
+   {
+    "t": "warn",
+    "en": "Reading the tier list as absolute. It ranks base power at Lv150 with neutral IV. Awakening, gear and synergy can lift a lower-tier Tasmon above a neglected higher-tier one.",
+    "pt": "Ler a tier list como absoluta. Ela ranqueia o poder base no Nv150 com IV neutro. Despertar, equipamento e sinergia podem levar um Tasmon de tier menor acima de um de tier maior sem investimento."
+   },
+   {
+    "t": "widget",
+    "id": "pinnacle"
+   }
+  ]
+ },
+ {
+  "id": "tips",
+  "en": "Pro tips",
+  "pt": "Dicas avançadas",
+  "blocks": [
+   {
+    "t": "ul",
+    "items": [
+     {
+      "en": "Run the Save Analyzer after each upgrade. Its sensitivity table shows which stat (ATK, crit, skill power…) gives the biggest jump for your current team.",
+      "pt": "Rode o Save Analyzer após cada melhoria. A tabela de sensibilidade mostra qual atributo (ATQ, crítico, poder de skill…) dá o maior salto para o seu time atual."
+     },
+     {
+      "en": "Use the Team Builder in “every Tasmon in the game” mode to decide what to chase, then switch to “my save” to see what you can build today and where each skill can be inherited from.",
+      "pt": "Use o Team Builder no modo “todos os Tasmons do jogo” para decidir o que buscar e depois troque para “meu save” para ver o que dá para montar hoje e de onde cada golpe pode ser herdado."
+     },
+     {
+      "en": "For Ranked PvP, look at the [Ranked] passives: 60 species have a special passive that only works there, and the Team Builder gives a small bonus for each in your team.",
+      "pt": "Para o PvP Ranqueado, olhe as passivas [Ranked]: 60 espécies têm uma passiva especial que só vale lá, e o Team Builder dá um pequeno bônus para cada uma no seu time."
+     },
+     {
+      "en": "Complete the DEX. Its permanent bonuses (up to +12% ATK and +12% Max HP in total) apply to your whole account.",
+      "pt": "Complete a DEX. Os bônus permanentes dela (até +12% de ATQ e +12% de HP máx. no total) valem para toda a sua conta."
+     },
+     {
+      "en": "Compare Rare/Hidden jobs in the Tasmon Tier List tabs before spending a Rare or Hidden Job stone, so the guaranteed job is the one that suits your Tasmon’s nature.",
+      "pt": "Compare os jobs Raros/Ocultos nas abas do Tasmon Tier List antes de gastar uma pedra de Job Raro ou Oculto, para o job garantido ser o que combina com a natureza do seu Tasmon."
+     },
+     {
+      "en": "Back up your save before editing it or trying the Pinnacle gamble. In the editor, work on a copy.",
+      "pt": "Faça backup do save antes de editar ou de tentar a aposta do Pinnacle. No editor, trabalhe numa cópia."
+     }
+    ]
+   },
+   {
+    "t": "links",
+    "items": [
+     {
+      "to": "/analyzer",
+      "en": "Save Analyzer",
+      "pt": "Save Analyzer"
+     },
+     {
+      "to": "/team-builder",
+      "en": "Team Builder",
+      "pt": "Team Builder"
+     },
+     {
+      "to": "/passives",
+      "en": "Passives",
+      "pt": "Passivas"
+     },
+     {
+      "to": "/dex",
+      "en": "DEX",
+      "pt": "DEX"
+     }
+    ]
+   }
+  ]
+ }
+]

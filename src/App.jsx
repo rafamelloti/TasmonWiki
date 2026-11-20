@@ -16,6 +16,7 @@ import Hunt from './pages/Hunt.jsx';
 import Tower from './pages/Tower.jsx';
 import Analyzer from './pages/Analyzer.jsx';
 import TeamBuilderPage from './pages/TeamBuilderPage.jsx';
+import Guides from './pages/Guides.jsx';
 import Tiers from './pages/Tiers.jsx';
 import pkg from '../package.json';
 import Updates from './pages/Updates.jsx';
@@ -50,6 +51,7 @@ export default function App(){
         <Route path="/tower" element={<Tower />} />
         <Route path="/analyzer" element={<Analyzer />} />
         <Route path="/team-builder" element={<TeamBuilderPage />} />
+        <Route path="/guides" element={<Guides />} />
         <Route path="/tiers" element={<Tiers />} />
         <Route path="/updates" element={<Updates />} />
         <Route path="*" element={<Home />} />
