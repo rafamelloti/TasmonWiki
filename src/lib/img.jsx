@@ -23,10 +23,10 @@ export const roleArts = r => [`icons/role/${r}.png`];
 // <Img art={[...]}/> tries each path in order; if none loads it shows a neutral placeholder (site still works without images).
 export function Img({ art, alt = '', size = 56, className = '', label, shiny = false }){
   const list = Array.isArray(art) ? art : [art]; const key = list.join('|');
-  const [i, setI] = useState(0);
-  useEffect(() => { setI(0); }, [key]);
+  const [i, setI] = useState(0), [retry, setRetry] = useState(0);
+  useEffect(() => { setI(0); setRetry(0); }, [key]);
   if (i >= list.length) return <span className={'ph ' + className} style={{ width: size, height: size }} aria-label={alt}>{(label || alt || '?').slice(0, 2)}</span>;
-  return <img className={'pic ' + className} style={shiny ? { filter: `hue-rotate(${SHINY_HUE}deg)` } : undefined} src={imgUrl(list[i])} alt={alt} width={size} height={size} loading="lazy" onError={() => setI(i + 1)} />;
+  return <img className={'pic ' + className} style={shiny ? { filter: `hue-rotate(${SHINY_HUE}deg)` } : undefined} src={imgUrl(list[i]) + (retry ? '?r=' + retry : '')} alt={alt} width={size} height={size} loading="lazy" onError={() => { if (retry < 1) setTimeout(() => setRetry(1), 700); else { setRetry(0); setI(i + 1); } }} />;
 }
 // public/img/manifest.json (written by `npm run assets`) lists every image that exists; lets pages hide skins that do not exist.
 let _m; export function useAssets(){
